@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header>
+<div class="logo">💧 <span>JalSahay</span></div>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="register.html">Register Complaint</a>
+<a href="track.html">Track Complaint</a>
+<a href="admin.html">Admin</a>
+</nav>
+</header>
+
+<section class="form-section">
+<!-- =========================
+     WATER ANALYTICS DASHBOARD
+========================= -->
+
+<section class="analytics-section">
+
+    <h2>Water Management Analytics</h2>
+
+    <div class="analytics-cards">
+
+        <div class="analytics-card">
+            <h3>Total Complaints</h3>
+            <p id="totalComplaints">0</p>
+        </div>
+
+        <div class="analytics-card pending-card">
+            <h3>Pending</h3>
+            <p id="pendingComplaints">0</p>
+        </div>
+
+        <div class="analytics-card progress-card">
+            <h3>In Progress</h3>
+            <p id="progressComplaints">0</p>
+        </div>
+
+        <div class="analytics-card resolved-card">
+            <h3>Resolved</h3>
+            <p id="resolvedComplaints">0</p>
+        </div>
+
+    </div>
+
+
+    <div class="charts-container">
+
+        <div class="chart-box">
+            <h3>Complaints by Problem</h3>
+            <canvas id="problemChart"></canvas>
+        </div>
+
+        <div class="chart-box">
+            <h3>Complaint Status</h3>
+            <canvas id="statusChart"></canvas>
+        </div>
+
+    </div>
+
+
+    <div class="chart-box large-chart">
+
+        <h3>Complaints by Village</h3>
+
+        <canvas id="villageChart"></canvas>
+
+    </div>
+
+</section>
+<h2>All Complaints</h2>
+
+<table id="complaintTable" border="1" width="100%">
+<thead>
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Village</th>
+<th>Problem</th>
+<th>Status</th>
+<th>Action</th>
+</tr>
+</thead>
+
+<tbody>
+
+</tbody>
+
+</table>
+
+</section>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>

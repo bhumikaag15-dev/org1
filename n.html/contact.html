@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contact JalSahay</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+
+        .page-content {
+            padding: 45px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .page-header h1 {
+            color: #0866d8;
+            font-size: 38px;
+        }
+
+        .page-header p {
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 30px;
+        }
+
+        .contact-info,
+        .contact-form {
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        }
+
+        .contact-info h2,
+        .contact-form h2 {
+            color: #0866d8;
+            margin-bottom: 20px;
+        }
+
+        .contact-item {
+            padding: 18px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .contact-item strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .contact-item span {
+            color: #666;
+        }
+
+        .contact-form input,
+        .contact-form textarea,
+        .contact-form select {
+
+            width: 100%;
+            padding: 13px;
+
+            border: 1px solid #ddd;
+            border-radius: 9px;
+
+            margin-bottom: 15px;
+
+            font-size: 15px;
+
+            box-sizing: border-box;
+        }
+
+        .contact-form textarea {
+            min-height: 130px;
+            resize: vertical;
+        }
+
+        .contact-btn {
+
+            width: 100%;
+            padding: 14px;
+
+            border: none;
+            border-radius: 9px;
+
+            background: #0866d8;
+            color: white;
+
+            font-size: 16px;
+            cursor: pointer;
+
+        }
+
+        .contact-btn:hover {
+            background: #0454b5;
+        }
+
+        #contactMessage {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        @media(max-width: 800px) {
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .page-content {
+                padding: 25px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="logo">
+            💧 <strong>JalSahay</strong>
+        </div>
+
+        <nav>
+
+            <a href="index.html">🏠 Home</a>
+
+            <a href="register.html">📋 Report Complaint</a>
+
+            <a href="track.html">🔎 Track Complaint</a>
+
+            <a href="analytics.html">📊 Analytics</a>
+
+            <a href="comparison.html">⚖️ Comparison</a>
+
+            <a href="blog.html">📰 Blog</a>
+
+            <a href="about.html">ℹ️ About</a>
+
+            <a href="contact.html" class="active">☎️ Contact</a>
+
+        </nav>
+
+    </aside>
+
+
+    <main class="main-content">
+
+
+        <section class="page-content">
+
+
+            <div class="page-header">
+
+                <h1>Contact Us</h1>
+
+                <p>
+                    Have a question or need assistance with a water-related
+                    issue? Get in touch with the JalSahay support team.
+                </p>
+
+            </div>
+
+
+            <div class="contact-grid">
+
+
+                <div class="contact-info">
+
+                    <h2>📞 Support Information</h2>
+
+
+                    <div class="contact-item">
+
+                        <strong>📍 Office</strong>
+
+                        <span>
+                            Rural Water Management Department
+                        </span>
+
+                    </div>
+
+
+                    <div class="contact-item">
+
+                        <strong>📧 Email</strong>
+
+                        <span>
+                            support@jalsahay.in
+                        </span>
+
+                    </div>
+
+
+                    <div class="contact-item">
+
+                        <strong>☎️ Helpline</strong>
+
+                        <span>
+                            1800-XXX-XXXX
+                        </span>
+
+                    </div>
+
+
+                    <div class="contact-item">
+
+                        <strong>🕐 Working Hours</strong>
+
+                        <span>
+                            Monday – Saturday<br>
+                            9:00 AM – 6:00 PM
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="contact-form">
+
+                    <h2>✉️ Send a Message</h2>
+
+
+                    <form id="contactForm">
+
+                        <input
+                            type="text"
+                            id="contactName"
+                            placeholder="Your Name"
+                            required
+                        >
+
+
+                        <input
+                            type="email"
+                            id="contactEmail"
+                            placeholder="Email Address"
+                            required
+                        >
+
+
+                        <select id="contactSubject" required>
+
+                            <option value="">
+                                Select Subject
+                            </option>
+
+                            <option>
+                                Complaint Support
+                            </option>
+
+                            <option>
+                                Technical Issue
+                            </option>
+
+                            <option>
+                                Water Supply Issue
+                            </option>
+
+                            <option>
+                                General Enquiry
+                            </option>
+
+                        </select>
+
+
+                        <textarea
+                            id="contactText"
+                            placeholder="Write your message..."
+                            required
+                        ></textarea>
+
+
+                        <button
+                            type="submit"
+                            class="contact-btn"
+                        >
+                            Send Message
+                        </button>
+
+
+                        <p id="contactMessage"></p>
+
+                    </form>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+    <script>
+
+        const contactForm =
+            document.getElementById("contactForm");
+
+        contactForm.addEventListener("submit", function(e) {
+
+            e.preventDefault();
+
+            const message =
+                document.getElementById("contactMessage");
+
+            message.innerHTML =
+                "✅ Your message has been submitted successfully!";
+
+            message.style.color = "green";
+
+            contactForm.reset();
+
+        });
+
+    </script>
+
+
+</body>
+
+</html>

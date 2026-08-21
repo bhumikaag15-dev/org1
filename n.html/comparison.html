@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Village Comparison | JalSahay</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .page-content {
+            padding: 45px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .page-header {
+            margin-bottom: 35px;
+        }
+
+        .page-header h1 {
+            color: #0866d8;
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            color: #666;
+            font-size: 17px;
+        }
+
+        .comparison-card {
+            background: white;
+            border-radius: 18px;
+            padding: 30px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+        }
+
+        .comparison-card h2 {
+            color: #123;
+            margin-bottom: 20px;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .comparison-table th {
+            background: #0878dc;
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+
+        .comparison-table td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .comparison-table tr:hover {
+            background: #f5faff;
+        }
+
+        .good {
+            color: #159447;
+            font-weight: bold;
+        }
+
+        .warning {
+            color: #e79b00;
+            font-weight: bold;
+        }
+
+        .bad {
+            color: #d93636;
+            font-weight: bold;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .info-box {
+            background: #f5faff;
+            border-radius: 14px;
+            padding: 22px;
+        }
+
+        .info-box h3 {
+            color: #0866d8;
+            margin-bottom: 10px;
+        }
+
+        @media(max-width: 800px) {
+            .page-content {
+                padding: 25px;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-table {
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="logo">
+            💧 <strong>JalSahay</strong>
+        </div>
+
+        <nav>
+            <a href="index.html">🏠 Home</a>
+            <a href="register.html">📋 Report Complaint</a>
+            <a href="track.html">🔎 Track Complaint</a>
+            <a href="analytics.html">📊 Analytics</a>
+            <a href="comparison.html" class="active">⚖️ Comparison</a>
+            <a href="blog.html">📰 Blog</a>
+            <a href="about.html">ℹ️ About</a>
+            <a href="contact.html">☎️ Contact</a>
+        </nav>
+
+    </aside>
+
+
+    <main class="main-content">
+
+        <section class="page-content">
+
+            <div class="page-header">
+
+                <h1>Village Water Comparison</h1>
+
+                <p>
+                    Compare water-related complaints and service performance
+                    across different villages.
+                </p>
+
+            </div>
+
+
+            <div class="comparison-card">
+
+                <h2>📊 Village Performance</h2>
+
+                <table class="comparison-table">
+
+                    <thead>
+
+                        <tr>
+                            <th>Village</th>
+                            <th>Total Complaints</th>
+                            <th>Pending</th>
+                            <th>Resolved</th>
+                            <th>Resolution Rate</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>Rampur</td>
+                            <td>25</td>
+                            <td>6</td>
+                            <td>19</td>
+                            <td class="good">76%</td>
+                        </tr>
+
+                        <tr>
+                            <td>Shivpur</td>
+                            <td>31</td>
+                            <td>12</td>
+                            <td>19</td>
+                            <td class="warning">61%</td>
+                        </tr>
+
+                        <tr>
+                            <td>Rajgaon</td>
+                            <td>18</td>
+                            <td>3</td>
+                            <td>15</td>
+                            <td class="good">83%</td>
+                        </tr>
+
+                        <tr>
+                            <td>Ganeshwadi</td>
+                            <td>42</td>
+                            <td>20</td>
+                            <td>22</td>
+                            <td class="bad">52%</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <div class="comparison-card">
+
+                <h2>💡 What the comparison shows</h2>
+
+                <div class="info-grid">
+
+                    <div class="info-box">
+
+                        <h3>🏆 Best Performing</h3>
+
+                        <p>
+                            Rajgaon currently has the highest complaint
+                            resolution rate at 83%.
+                        </p>
+
+                    </div>
+
+
+                    <div class="info-box">
+
+                        <h3>⚠️ Needs Attention</h3>
+
+                        <p>
+                            Ganeshwadi has a high number of pending complaints
+                            and requires faster intervention.
+                        </p>
+
+                    </div>
+
+
+                    <div class="info-box">
+
+                        <h3>📈 Purpose</h3>
+
+                        <p>
+                            Authorities can use this comparison to identify
+                            areas requiring additional resources.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>

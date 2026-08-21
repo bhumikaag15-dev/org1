@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Water Management Blog | JalSahay</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+
+        .page-content {
+            padding: 45px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .page-header h1 {
+            color: #0866d8;
+            font-size: 38px;
+        }
+
+        .page-header p {
+            color: #666;
+            font-size: 17px;
+            margin-bottom: 35px;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 18px;
+            padding: 28px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            transition: 0.3s;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .blog-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .blog-card h2 {
+            color: #123;
+            font-size: 21px;
+            margin-bottom: 12px;
+        }
+
+        .blog-card p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #e7f3ff;
+            color: #0866d8;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            margin-top: 15px;
+        }
+
+        @media(max-width: 900px) {
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .page-content {
+                padding: 25px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="logo">
+            💧 <strong>JalSahay</strong>
+        </div>
+
+        <nav>
+
+            <a href="index.html">🏠 Home</a>
+
+            <a href="register.html">📋 Report Complaint</a>
+
+            <a href="track.html">🔎 Track Complaint</a>
+
+            <a href="analytics.html">📊 Analytics</a>
+
+            <a href="comparison.html">⚖️ Comparison</a>
+
+            <a href="blog.html" class="active">📰 Blog</a>
+
+            <a href="about.html">ℹ️ About</a>
+
+            <a href="contact.html">☎️ Contact</a>
+
+        </nav>
+
+    </aside>
+
+
+    <main class="main-content">
+
+        <section class="page-content">
+
+            <div class="page-header">
+
+                <h1>Water Management Blog</h1>
+
+                <p>
+                    Learn about water conservation, infrastructure,
+                    leakage prevention and rural water management.
+                </p>
+
+            </div>
+
+
+            <div class="blog-grid">
+
+
+                <article class="blog-card">
+
+                    <div class="blog-icon">💧</div>
+
+                    <h2>Why Water Conservation Matters</h2>
+
+                    <p>
+                        Water is one of our most important natural resources.
+                        Responsible water usage helps communities maintain
+                        reliable water supplies for future generations.
+                    </p>
+
+                    <span class="tag">Water Conservation</span>
+
+                </article>
+
+
+                <article class="blog-card">
+
+                    <div class="blog-icon">🚰</div>
+
+                    <h2>Detecting Water Leakage</h2>
+
+                    <p>
+                        Small leaks in pipelines can result in significant
+                        water loss. Early reporting allows maintenance teams
+                        to identify and repair damaged infrastructure quickly.
+                    </p>
+
+                    <span class="tag">Infrastructure</span>
+
+                </article>
+
+
+                <article class="blog-card">
+
+                    <div class="blog-icon">🌱</div>
+
+                    <h2>Rainwater Harvesting</h2>
+
+                    <p>
+                        Rainwater harvesting can help villages collect and
+                        store rainwater while reducing dependence on
+                        groundwater resources.
+                    </p>
+
+                    <span class="tag">Sustainability</span>
+
+                </article>
+
+
+                <article class="blog-card">
+
+                    <div class="blog-icon">📊</div>
+
+                    <h2>Using Data for Water Management</h2>
+
+                    <p>
+                        Complaint analytics can help authorities identify
+                        recurring problems, high-risk locations and areas
+                        requiring infrastructure improvements.
+                    </p>
+
+                    <span class="tag">Analytics</span>
+
+                </article>
+
+
+                <article class="blog-card">
+
+                    <div class="blog-icon">🏘️</div>
+
+                    <h2>Community Participation</h2>
+
+                    <p>
+                        Local residents play an important role in identifying
+                        water problems. Simple and accessible reporting
+                        systems can improve communication with authorities.
+                    </p>
+
+                    <span class="tag">Community</span>
+
+                </article>
+
+
+                <article class="blog-card">
+
+                    <div class="blog-icon">🔧</div>
+
+                    <h2>Importance of Preventive Maintenance</h2>
+
+                    <p>
+                        Regular inspection of pipelines, pumps and water
+                        infrastructure can reduce breakdowns and improve
+                        the reliability of water services.
+                    </p>
+
+                    <span class="tag">Maintenance</span>
+
+                </article>
+
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>
