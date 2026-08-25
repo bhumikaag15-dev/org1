@@ -1,0 +1,1479 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>JalSahay | Smart Water Complaint System</title>
+    <link rel="stylesheet" href="css/style.css">
+    
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================
+     NAVBAR
+========================================= -->
+
+<header class="navbar">
+
+    <div class="logo">
+
+        <span class="logo-icon">💧</span>
+
+        <span>JalSahay</span>
+
+    </div>
+
+
+    <nav>
+
+        <a
+            href="#home"
+            data-translate="home"
+        >
+            Home
+        </a>
+
+        <a
+            href="#report"
+            data-translate="report"
+        >
+            Report Problem
+        </a>
+
+        <a
+            href="tracking.html"
+            data-translate="track"
+        >
+            Track Complaint
+        </a>
+
+        <a
+            href="authority.html"
+            data-translate="authority"
+        >
+            Authority
+        </a>
+
+    </nav>
+
+
+    <div class="language-box">
+
+        <span>🌐</span>
+
+        <select
+            id="languageSelector"
+            onchange="changeLanguage(this.value)"
+        >
+
+            <option value="en">
+                English
+            </option>
+
+            <option value="hi">
+                हिंदी
+            </option>
+
+            <option value="mr">
+                मराठी
+            </option>
+
+            <option value="hinglish">
+                Hinglish
+            </option>
+
+        </select>
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================================
+     HERO
+========================================= -->
+
+<section
+    class="hero"
+    id="home"
+>
+
+    <div class="hero-content">
+
+        <div
+            class="badge"
+            data-translate="heroBadge"
+        >
+            💧 Smart Water Complaint System
+        </div>
+
+
+        <h1>
+
+            <span data-translate="heroTitle">
+                Report Water Problems.
+            </span>
+
+            <br>
+
+            <span
+                class="blue-text"
+                data-translate="heroTitle2"
+            >
+                Get Them Resolved.
+            </span>
+
+        </h1>
+
+
+        <p data-translate="heroDescription">
+
+            JalSahay helps people report water
+            problems and track their complaints
+            easily.
+
+        </p>
+
+
+        <div class="hero-buttons">
+
+            <a
+                href="#report"
+                class="primary-button"
+                data-translate="reportButton"
+            >
+                📝 Report a Problem
+            </a>
+
+
+            <a
+                href="tracking.html"
+                class="secondary-button"
+                data-translate="trackButton"
+            >
+                🔍 Track Complaint
+            </a>
+
+        </div>
+
+
+        <!-- FEATURES -->
+
+        <div class="hero-features">
+
+            <div>
+
+                <strong>📍 GPS</strong>
+
+                <small>Location</small>
+
+            </div>
+
+
+            <div>
+
+                <strong>📷 Photo</strong>
+
+                <small>Evidence</small>
+
+            </div>
+
+
+            <div>
+
+                <strong>🎙️ Voice</strong>
+
+                <small>Coming Soon</small>
+
+            </div>
+
+
+            <div>
+
+                <strong>🆓 Free</strong>
+
+                <small>For Citizens</small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- HERO CARD -->
+
+    <div class="hero-card">
+
+        <div class="water-icon">
+            💧
+        </div>
+
+
+        <h2 data-translate="cardTitle">
+            JalSahay
+        </h2>
+
+
+        <p data-translate="cardDescription">
+
+            A simple platform to solve
+            water problems in villages.
+
+        </p>
+
+
+        <div
+            class="active-status"
+            data-translate="systemActive"
+        >
+            🟢 System Active
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================
+     COMMON PROBLEMS
+========================================= -->
+
+<section class="section">
+
+    <div class="section-heading">
+
+        <span class="section-label">
+            WATER SERVICES
+        </span>
+
+
+        <h2 data-translate="commonProblems">
+
+            Common Water Problems
+
+        </h2>
+
+
+        <p data-translate="commonDescription">
+
+            Choose the problem you are facing.
+
+        </p>
+
+    </div>
+
+
+
+    <div class="problem-grid">
+
+
+        <div
+            class="problem-card"
+            onclick="selectProblem('Water Leakage')"
+        >
+
+            <div class="problem-icon">
+                💧
+            </div>
+
+            <h3 data-translate="leakage">
+                Water Leakage
+            </h3>
+
+            <p data-translate="leakageDesc">
+                Report leaking pipes or
+                water wastage.
+            </p>
+
+        </div>
+
+
+
+        <div
+            class="problem-card"
+            onclick="selectProblem('No Water Supply')"
+        >
+
+            <div class="problem-icon">
+                🚱
+            </div>
+
+            <h3 data-translate="noWater">
+                No Water Supply
+            </h3>
+
+            <p data-translate="noWaterDesc">
+                Report if water is not coming.
+            </p>
+
+        </div>
+
+
+
+        <div
+            class="problem-card"
+            onclick="selectProblem('Dirty Water')"
+        >
+
+            <div class="problem-icon">
+                🟤
+            </div>
+
+            <h3 data-translate="dirtyWater">
+                Dirty Water
+            </h3>
+
+            <p data-translate="dirtyWaterDesc">
+                Report dirty or contaminated
+                water.
+            </p>
+
+        </div>
+
+
+
+        <div
+            class="problem-card"
+            onclick="selectProblem('Pipe Damage')"
+        >
+
+            <div class="problem-icon">
+                🔧
+            </div>
+
+            <h3 data-translate="pipeDamage">
+                Pipe Damage
+            </h3>
+
+            <p data-translate="pipeDamageDesc">
+                Report broken or damaged pipes.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================
+     REPORT SECTION
+========================================= -->
+
+<section
+    class="report-section"
+    id="report"
+>
+
+    <div class="section-heading">
+
+        <span class="section-label">
+            REPORT
+        </span>
+
+
+        <h2 data-translate="reportTitle">
+
+            Report Your Water Problem
+
+        </h2>
+
+
+        <p data-translate="reportDescription">
+
+            Tell us about the problem in your area.
+
+        </p>
+
+    </div>
+
+
+
+    <div class="form-card">
+
+        <form id="complaintForm">
+
+
+            <!-- NAME -->
+
+            <label data-translate="name">
+                Your Name
+            </label>
+
+            <input
+                type="text"
+                id="citizenName"
+                required
+                data-placeholder="namePlaceholder"
+                placeholder="Enter your name"
+            >
+
+
+
+            <!-- PROBLEM -->
+
+            <label data-translate="problemType">
+                Problem Type
+            </label>
+
+            <select
+                id="issueType"
+                required
+            >
+
+                <option
+                    value=""
+                    data-translate="selectProblem"
+                >
+                    Select problem
+                </option>
+
+                <option value="Water Leakage">
+                    💧 Water Leakage
+                </option>
+
+                <option value="No Water Supply">
+                    🚱 No Water Supply
+                </option>
+
+                <option value="Dirty Water">
+                    🟤 Dirty Water
+                </option>
+
+                <option value="Pipe Damage">
+                    🔧 Pipe Damage
+                </option>
+
+            </select>
+
+
+
+            <!-- DESCRIPTION -->
+
+            <label data-translate="description">
+                Describe the Problem
+            </label>
+
+            <textarea
+                id="description"
+                rows="5"
+                required
+                data-placeholder="descriptionPlaceholder"
+                placeholder="Tell us what happened..."
+            ></textarea>
+
+
+
+            <!-- PHOTO -->
+
+            <label data-translate="photo">
+                📷 Photo
+            </label>
+
+            <input
+                type="file"
+                id="photo"
+                accept="image/*"
+            >
+
+
+
+            <!-- LOCATION -->
+
+            <label data-translate="location">
+                📍 Location
+            </label>
+
+
+            <button
+                type="button"
+                class="location-button"
+                onclick="getLocation()"
+                data-translate="getLocation"
+            >
+
+                📍 Get My Location
+
+            </button>
+
+
+            <p id="locationStatus">
+
+                Location not captured
+
+            </p>
+
+
+
+            <!-- SUBMIT -->
+
+            <button
+                type="submit"
+                class="submit-button"
+                data-translate="submit"
+            >
+
+                🚀 Submit Complaint
+
+            </button>
+
+
+        </form>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================
+     HOW IT WORKS
+========================================= -->
+
+<section class="section">
+
+    <div class="section-heading">
+
+        <span class="section-label">
+            SIMPLE PROCESS
+        </span>
+
+
+        <h2 data-translate="howItWorks">
+
+            How JalSahay Works
+
+        </h2>
+
+    </div>
+
+
+
+    <div class="steps">
+
+
+        <div class="step">
+
+            <div class="step-number">
+                1
+            </div>
+
+            <h3 data-translate="step1">
+                Report
+            </h3>
+
+            <p data-translate="step1Desc">
+                Tell us about your water problem.
+            </p>
+
+        </div>
+
+
+
+        <div class="step">
+
+            <div class="step-number">
+                2
+            </div>
+
+            <h3 data-translate="step2">
+                Review
+            </h3>
+
+            <p data-translate="step2Desc">
+                The authority checks your complaint.
+            </p>
+
+        </div>
+
+
+
+        <div class="step">
+
+            <div class="step-number">
+                3
+            </div>
+
+            <h3 data-translate="step3">
+                Worker Assigned
+            </h3>
+
+            <p data-translate="step3Desc">
+                A worker is assigned to solve
+                the problem.
+            </p>
+
+        </div>
+
+
+
+        <div class="step">
+
+            <div class="step-number">
+                4
+            </div>
+
+            <h3 data-translate="step4">
+                Problem Solved
+            </h3>
+
+            <p data-translate="step4Desc">
+                Track the complaint until it
+                is resolved.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================
+     FOOTER
+========================================= -->
+
+<footer>
+
+    <div class="logo">
+        💧 JalSahay
+    </div>
+
+
+    <p data-translate="footer">
+
+        Smart water complaint and
+        maintenance system.
+
+    </p>
+
+
+    <p>
+        © 2026 JalSahay
+    </p>
+
+</footer>
+
+
+
+<!-- =========================================
+     JAVASCRIPT
+========================================= -->
+
+<script src="data/translations.js"></script>
+
+<script src="js/language.js"></script>
+
+<script src="js/script.js"></script>
+
+<!-- =========================================
+     JALSAHAY GLOBAL DARK MODE
+========================================= -->
+
+<style>
+
+/* Dark Mode Button */
+#darkModeButton {
+    position: fixed;
+    top: 105px;
+    right: 30px;
+
+    width: 48px;
+    height: 48px;
+
+    border-radius: 50%;
+    border: 1px solid #dbeafe;
+
+    background: white;
+
+    font-size: 21px;
+
+    cursor: pointer;
+
+    z-index: 99999;
+
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+
+    transition: 0.3s ease;
+}
+
+#darkModeButton:hover {
+    transform: scale(1.08);
+}
+
+
+/* =========================================
+   DARK MODE BODY
+========================================= */
+
+body.dark-mode {
+    background: #0f172a !important;
+    color: #e2e8f0 !important;
+}
+
+
+/* Navbar */
+
+body.dark-mode .navbar {
+    background: #111827 !important;
+    border-color: #334155 !important;
+}
+
+body.dark-mode .logo {
+    color: #7dd3fc !important;
+}
+
+body.dark-mode nav a {
+    color: #cbd5e1 !important;
+}
+
+body.dark-mode nav a:hover {
+    background: #1e293b !important;
+    color: #7dd3fc !important;
+}
+
+body.dark-mode nav a.active {
+    background: #164e63 !important;
+    color: #7dd3fc !important;
+}
+
+
+/* =========================================
+   COMMON CARDS
+========================================= */
+
+body.dark-mode .card,
+body.dark-mode .feature-card,
+body.dark-mode .info-card,
+body.dark-mode .complaint-card,
+body.dark-mode .form-card,
+body.dark-mode .hero-card,
+body.dark-mode .service-card {
+    background: #1e293b !important;
+    border-color: #334155 !important;
+    color: #e2e8f0 !important;
+}
+
+
+/* Headings */
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4 {
+    color: #f8fafc !important;
+}
+
+
+/* Paragraphs */
+
+body.dark-mode p {
+    color: #94a3b8 !important;
+}
+
+
+/* =========================================
+   INPUTS
+========================================= */
+
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select {
+    background: #1e293b !important;
+    color: #f8fafc !important;
+    border-color: #475569 !important;
+}
+
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder {
+    color: #64748b !important;
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+body.dark-mode button {
+    color: #f8fafc;
+}
+
+body.dark-mode .btn-primary {
+    background: linear-gradient(
+        135deg,
+        #0891b2,
+        #2563eb
+    ) !important;
+
+    color: white !important;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+body.dark-mode footer {
+    background: #0b1120 !important;
+    color: #94a3b8 !important;
+}
+
+
+/* =========================================
+   LANGUAGE BOX
+========================================= */
+
+body.dark-mode .language-box {
+    background: #1e293b !important;
+    border-color: #475569 !important;
+}
+
+body.dark-mode .language-box select {
+    background: transparent !important;
+    color: #f8fafc !important;
+}
+
+
+/* =========================================
+   DARK MODE BUTTON
+========================================= */
+
+body.dark-mode #darkModeButton {
+    background: #1e293b;
+
+    border-color: #475569;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,0.4);
+}
+
+
+/* Smooth transition */
+
+body,
+.navbar,
+.card,
+.feature-card,
+.info-card,
+.form-card,
+.hero-card,
+.service-card,
+input,
+textarea,
+select {
+    transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        border-color 0.3s ease;
+}
+
+
+/* Mobile */
+
+@media(max-width:600px) {
+
+    #darkModeButton {
+        top: 90px;
+        right: 15px;
+
+        width: 42px;
+        height: 42px;
+    }
+
+}
+
+/* =====================================================
+   JALSAHAY - PROFESSIONAL DARK MODE
+   Paste this at the VERY END of <style>
+===================================================== */
+
+body.dark-mode {
+
+    background:
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(14, 165, 233, 0.12),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 80%,
+            rgba(37, 99, 235, 0.12),
+            transparent 30%
+        ),
+        #07111f !important;
+
+    color: #e5eef9 !important;
+
+}
+
+
+/* =========================================
+   TOP NAVBAR
+========================================= */
+
+body.dark-mode .navbar {
+
+    background: rgba(8, 18, 32, 0.94) !important;
+
+    border-bottom: 1px solid #26384d !important;
+
+    box-shadow:
+        0 8px 30px rgba(0, 0, 0, 0.25);
+
+}
+
+
+body.dark-mode .logo {
+
+    color: #7dd3fc !important;
+
+}
+
+
+body.dark-mode nav a {
+
+    color: #cbd5e1 !important;
+
+}
+
+
+body.dark-mode nav a:hover {
+
+    color: #7dd3fc !important;
+
+    background: rgba(14, 165, 233, 0.10) !important;
+
+}
+
+
+body.dark-mode nav a.active {
+
+    color: #ffffff !important;
+
+    background:
+        linear-gradient(
+            135deg,
+            #075985,
+            #1d4ed8
+        ) !important;
+
+    box-shadow:
+        0 8px 25px rgba(37, 99, 235, 0.20);
+
+}
+
+
+/* =========================================
+   MAIN PAGE
+========================================= */
+
+body.dark-mode main {
+
+    background: transparent !important;
+
+}
+
+
+/* =========================================
+   PAGE HEADING
+========================================= */
+
+body.dark-mode h1 {
+
+    color: #f8fafc !important;
+
+}
+
+
+body.dark-mode h2 {
+
+    color: #f1f5f9 !important;
+
+}
+
+
+body.dark-mode h3 {
+
+    color: #e2e8f0 !important;
+
+}
+
+
+body.dark-mode p {
+
+    color: #94a3b8 !important;
+
+}
+
+
+/* =========================================
+   REPORT PAGE CARD
+========================================= */
+
+body.dark-mode .form-card,
+body.dark-mode .report-card,
+body.dark-mode .complaint-form,
+body.dark-mode .form-container {
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(18, 32, 52, 0.97),
+            rgba(12, 25, 43, 0.97)
+        ) !important;
+
+    border:
+        1px solid #2d425b !important;
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.40) !important;
+
+}
+
+
+/* =========================================
+   ALL LABELS
+========================================= */
+
+body.dark-mode label {
+
+    color: #cbd5e1 !important;
+
+}
+
+
+/* =========================================
+   INPUTS
+========================================= */
+
+body.dark-mode input,
+body.dark-mode select,
+body.dark-mode textarea {
+
+    background: #152338 !important;
+
+    color: #f8fafc !important;
+
+    border:
+        1px solid #3a506b !important;
+
+    box-shadow:
+        inset 0 1px 2px rgba(0,0,0,0.15);
+
+}
+
+
+/* Placeholder */
+
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder {
+
+    color: #71839a !important;
+
+}
+
+
+/* Focus */
+
+body.dark-mode input:focus,
+body.dark-mode select:focus,
+body.dark-mode textarea:focus {
+
+    border-color: #38bdf8 !important;
+
+    outline: none !important;
+
+    box-shadow:
+        0 0 0 3px rgba(56, 189, 248, 0.12) !important;
+
+}
+
+
+/* =========================================
+   SELECT DROPDOWN
+========================================= */
+
+body.dark-mode select option {
+
+    background: #152338;
+
+    color: #f8fafc;
+
+}
+
+
+/* =========================================
+   FILE UPLOAD
+========================================= */
+
+body.dark-mode input[type="file"] {
+
+    background: #152338 !important;
+
+    color: #cbd5e1 !important;
+
+    border: 1px solid #3a506b !important;
+
+}
+
+
+body.dark-mode input[type="file"]::file-selector-button {
+
+    background:
+        linear-gradient(
+            135deg,
+            #0369a1,
+            #2563eb
+        );
+
+    color: white;
+
+    border: none;
+
+    border-radius: 8px;
+
+    padding: 9px 15px;
+
+    margin-right: 12px;
+
+    cursor: pointer;
+
+    font-weight: 600;
+
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+body.dark-mode button {
+
+    transition: 0.25s ease;
+
+}
+
+
+body.dark-mode .btn-primary,
+body.dark-mode .submit-btn {
+
+    background:
+        linear-gradient(
+            135deg,
+            #0284c7,
+            #2563eb
+        ) !important;
+
+    color: white !important;
+
+    border: none !important;
+
+    box-shadow:
+        0 10px 25px rgba(37, 99, 235, 0.25);
+
+}
+
+
+body.dark-mode .btn-primary:hover,
+body.dark-mode .submit-btn:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 15px 30px rgba(37, 99, 235, 0.35);
+
+}
+
+
+/* =========================================
+   LANGUAGE SELECTOR
+========================================= */
+
+body.dark-mode .language-box {
+
+    background: #142238 !important;
+
+    border:
+        1px solid #344b65 !important;
+
+}
+
+
+body.dark-mode .language-box select {
+
+    background: transparent !important;
+
+    color: #f1f5f9 !important;
+
+}
+
+
+/* =========================================
+   DARK MODE BUTTON
+========================================= */
+
+body.dark-mode #darkModeButton {
+
+    background:
+        linear-gradient(
+            145deg,
+            #17263b,
+            #0f1d30
+        ) !important;
+
+    border:
+        1px solid #3b526b !important;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.40);
+
+}
+
+
+body.dark-mode #darkModeButton:hover {
+
+    border-color: #38bdf8 !important;
+
+    box-shadow:
+        0 0 20px rgba(56,189,248,0.18);
+
+}
+
+
+/* =========================================
+   CARDS / FEATURES
+========================================= */
+
+body.dark-mode .card,
+body.dark-mode .feature-card,
+body.dark-mode .service-card,
+body.dark-mode .info-card {
+
+    background:
+        #122238 !important;
+
+    border:
+        1px solid #2c425a !important;
+
+    color: #e2e8f0 !important;
+
+}
+
+
+body.dark-mode .card p,
+body.dark-mode .feature-card p,
+body.dark-mode .service-card p {
+
+    color: #94a3b8 !important;
+
+}
+
+
+/* =========================================
+   ICON BOXES
+========================================= */
+
+body.dark-mode .icon-box {
+
+    background:
+        rgba(14, 165, 233, 0.12) !important;
+
+    border:
+        1px solid rgba(56, 189, 248, 0.20);
+
+}
+
+
+/* =========================================
+   DIVIDERS
+========================================= */
+
+body.dark-mode hr {
+
+    border-color: #26384d !important;
+
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+body.dark-mode footer {
+
+    background: #050b14 !important;
+
+    border-top:
+        1px solid #26384d !important;
+
+    color: #94a3b8 !important;
+
+}
+
+
+/* =========================================
+   SCROLLBAR
+========================================= */
+
+body.dark-mode::-webkit-scrollbar {
+
+    width: 10px;
+
+}
+
+
+body.dark-mode::-webkit-scrollbar-track {
+
+    background: #07111f;
+
+}
+
+
+body.dark-mode::-webkit-scrollbar-thumb {
+
+    background: #263b54;
+
+    border-radius: 10px;
+
+}
+
+
+body.dark-mode::-webkit-scrollbar-thumb:hover {
+
+    background: #0ea5e9;
+
+}
+
+
+/* =========================================
+   SMOOTH TRANSITION
+========================================= */
+
+body,
+.navbar,
+.form-card,
+.report-card,
+.card,
+.feature-card,
+.service-card,
+input,
+select,
+textarea,
+button {
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+
+}
+
+</style>
+
+<script>
+
+/* =========================================
+   CREATE BUTTON
+========================================= */
+
+const darkModeButton =
+    document.createElement("button");
+
+darkModeButton.id = "darkModeButton";
+
+darkModeButton.innerHTML = "🌙";
+
+darkModeButton.title = "Dark Mode";
+
+document.body.appendChild(darkModeButton);
+
+
+/* =========================================
+   LOAD SAVED MODE
+========================================= */
+
+const savedMode =
+    localStorage.getItem("jalsahay-dark-mode");
+
+
+if (savedMode === "on") {
+
+    document.body.classList.add("dark-mode");
+
+    darkModeButton.innerHTML = "☀️";
+
+    darkModeButton.title = "Light Mode";
+
+}
+
+
+/* =========================================
+   TOGGLE
+========================================= */
+
+darkModeButton.addEventListener(
+    "click",
+    function() {
+
+        document.body.classList.toggle(
+            "dark-mode"
+        );
+
+        const isDark =
+            document.body.classList.contains(
+                "dark-mode"
+            );
+
+
+        if (isDark) {
+
+            darkModeButton.innerHTML = "☀️";
+
+            darkModeButton.title =
+                "Light Mode";
+
+            localStorage.setItem(
+                "jalsahay-dark-mode",
+                "on"
+            );
+
+        } else {
+
+            darkModeButton.innerHTML = "🌙";
+
+            darkModeButton.title =
+                "Dark Mode";
+
+            localStorage.setItem(
+                "jalsahay-dark-mode",
+                "off"
+            );
+
+        }
+
+    }
+);
+
+</script>
+</body>
+
+</html>

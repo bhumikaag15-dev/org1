@@ -1,0 +1,3159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>JalSahay - Track Complaint</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            color: #0f172a;
+
+            min-height: 100vh;
+
+            background:
+                radial-gradient(
+                    circle at 5% 20%,
+                    #c9f7ff 0,
+                    transparent 22%
+                ),
+                radial-gradient(
+                    circle at 95% 55%,
+                    #e0eaff 0,
+                    transparent 25%
+                ),
+                linear-gradient(
+                    135deg,
+                    #f7fdff,
+                    #eef5ff
+                );
+
+        }
+
+
+        /* ================================
+           NAVBAR
+        ================================= */
+
+        .navbar {
+
+            height: 90px;
+
+            background:
+                rgba(255,255,255,0.92);
+
+            backdrop-filter:
+                blur(14px);
+
+            border-top:
+                3px solid #17202b;
+
+            border-bottom:
+                1px solid #e2e8f0;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding:
+                0 7%;
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+
+        }
+
+
+        .logo {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            color: #075985;
+
+            font-size: 1.45rem;
+
+            font-weight: 900;
+
+        }
+
+
+        .logo-icon {
+
+            width: 50px;
+
+            height: 50px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 16px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #dff9ff,
+                    #dbeafe
+                );
+
+            font-size: 1.8rem;
+
+            box-shadow:
+                0 8px 25px
+                rgba(14,165,233,0.14);
+
+        }
+
+
+        nav {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+        }
+
+
+        nav a {
+
+            text-decoration: none;
+
+            color: #475569;
+
+            font-weight: 700;
+
+            padding:
+                13px 18px;
+
+            border-radius: 13px;
+
+            transition: 0.2s ease;
+
+        }
+
+
+        nav a:hover {
+
+            background: #f0f9ff;
+
+            color: #0369a1;
+
+        }
+
+
+        nav a.active {
+
+            color: #075985;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #e0f7ff,
+                    #dbeafe
+                );
+
+        }
+
+
+        /* ================================
+           LANGUAGE
+        ================================= */
+
+        .language-box {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            padding:
+                10px 15px;
+
+            border:
+                1px solid #dbeafe;
+
+            border-radius: 14px;
+
+            background: white;
+
+        }
+
+
+        .language-box span {
+
+            font-size: 1.1rem;
+
+        }
+
+
+        .language-box select {
+
+            border: none;
+
+            outline: none;
+
+            background: transparent;
+
+            font-weight: 800;
+
+            color: #334155;
+
+            cursor: pointer;
+
+        }
+
+
+        /* ================================
+           MAIN
+        ================================= */
+
+        .page {
+
+            max-width: 1150px;
+
+            margin:
+                45px auto;
+
+            padding:
+                0 25px 70px;
+
+        }
+
+
+        .tracking-card {
+
+            background:
+                rgba(255,255,255,0.94);
+
+            border:
+                1px solid #dbeafe;
+
+            border-radius: 32px;
+
+            padding:
+                38px;
+
+            box-shadow:
+                0 25px 70px
+                rgba(15,23,42,0.08);
+
+        }
+
+
+        /* ================================
+           HEADER
+        ================================= */
+
+        .page-label {
+
+            color: #0284c7;
+
+            font-weight: 900;
+
+            font-size: 0.82rem;
+
+            letter-spacing: 1.5px;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .page-title {
+
+            font-size:
+                clamp(2rem, 4vw, 3rem);
+
+            color: #075985;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .page-description {
+
+            color: #64748b;
+
+            line-height: 1.7;
+
+            margin-bottom: 28px;
+
+        }
+
+
+        /* ================================
+           SEARCH
+        ================================= */
+
+        .search-box {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            padding: 8px;
+
+            border:
+                1px solid #bfdbfe;
+
+            border-radius: 18px;
+
+            background:
+                #f8fcff;
+
+            box-shadow:
+                inset 0 1px 3px
+                rgba(15,23,42,0.03);
+
+        }
+
+
+        .search-box input {
+
+            flex: 1;
+
+            height: 55px;
+
+            border: none;
+
+            outline: none;
+
+            background: transparent;
+
+            padding:
+                0 18px;
+
+            font-size: 1rem;
+
+            color: #0f172a;
+
+        }
+
+
+        .search-box input::placeholder {
+
+            color: #94a3b8;
+
+        }
+
+
+        .track-btn {
+
+            height: 55px;
+
+            padding:
+                0 30px;
+
+            border: none;
+
+            border-radius: 14px;
+
+            color: white;
+
+            font-weight: 900;
+
+            cursor: pointer;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #087ea4,
+                    #2563eb
+                );
+
+            box-shadow:
+                0 10px 25px
+                rgba(37,99,235,0.22);
+
+            transition: 0.2s ease;
+
+        }
+
+
+        .track-btn:hover {
+
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 14px 30px
+                rgba(37,99,235,0.3);
+
+        }
+
+
+        .try-text {
+
+            margin:
+                15px 8px 30px;
+
+            color: #94a3b8;
+
+            font-size: 0.85rem;
+
+        }
+
+
+        /* ================================
+           COMPLAINT HEADER
+        ================================= */
+
+        .complaint-header {
+
+            border-top:
+                1px solid #e2e8f0;
+
+            padding-top: 32px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 20px;
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .small-label {
+
+            color: #94a3b8;
+
+            font-size: 0.72rem;
+
+            font-weight: 900;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .complaint-number {
+
+            font-size:
+                clamp(1.7rem, 4vw, 2.5rem);
+
+            color: #075985;
+
+            font-weight: 900;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .problem-name {
+
+            color: #64748b;
+
+            font-size: 1rem;
+
+        }
+
+
+        .status-badge {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            padding:
+                12px 18px;
+
+            border:
+                1px solid #bfdbfe;
+
+            border-radius: 30px;
+
+            background: #eff6ff;
+
+            color: #2563eb;
+
+            font-weight: 900;
+
+            white-space: nowrap;
+
+        }
+
+
+        /* ================================
+           ACTION BUTTONS
+        ================================= */
+
+        .tracking-actions {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 12px;
+
+            margin-bottom: 32px;
+
+        }
+
+
+        .action-btn {
+
+            min-height: 70px;
+
+            border:
+                1px solid #dbeafe;
+
+            border-radius: 16px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #ffffff,
+                    #f4fbff
+                );
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 11px;
+
+            padding:
+                12px 15px;
+
+            cursor: pointer;
+
+            text-align: left;
+
+            transition: 0.2s ease;
+
+        }
+
+
+        .action-btn:hover {
+
+            transform:
+                translateY(-3px);
+
+            border-color:
+                #7dd3fc;
+
+            box-shadow:
+                0 12px 28px
+                rgba(14,165,233,0.13);
+
+        }
+
+
+        .action-icon {
+
+            width: 38px;
+
+            height: 38px;
+
+            flex-shrink: 0;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 11px;
+
+            background: #e0f7ff;
+
+            font-size: 1.1rem;
+
+        }
+
+
+        .action-content strong {
+
+            display: block;
+
+            font-size: 0.78rem;
+
+            color: #0f172a;
+
+            margin-bottom: 4px;
+
+        }
+
+
+        .action-content small {
+
+            display: block;
+
+            font-size: 0.62rem;
+
+            color: #64748b;
+
+        }
+
+
+        /* ================================
+           INFO CARDS
+        ================================= */
+
+        .info-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 15px;
+
+            margin-bottom: 45px;
+
+        }
+
+
+        .info-card {
+
+            padding: 22px;
+
+            border:
+                1px solid #dbeafe;
+
+            border-radius: 18px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #f8fdff,
+                    #f1f7ff
+                );
+
+        }
+
+
+        .info-label {
+
+            color: #94a3b8;
+
+            font-size: 0.68rem;
+
+            font-weight: 900;
+
+            text-transform: uppercase;
+
+            margin-bottom: 9px;
+
+        }
+
+
+        .info-value {
+
+            font-size: 1rem;
+
+            font-weight: 900;
+
+            color: #172033;
+
+        }
+
+
+        /* ================================
+           PROGRESS
+        ================================= */
+
+        .section-title {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            color: #172033;
+
+            margin-bottom: 25px;
+
+            font-size: 1.35rem;
+
+        }
+
+
+        .section-title::before {
+
+            content: "";
+
+            width: 6px;
+
+            height: 30px;
+
+            border-radius: 10px;
+
+            background:
+                linear-gradient(
+                    #06b6d4,
+                    #2563eb
+                );
+
+        }
+
+
+        .timeline {
+
+            position: relative;
+
+            padding-left: 30px;
+
+        }
+
+
+        .timeline::before {
+
+            content: "";
+
+            position: absolute;
+
+            left: 10px;
+
+            top: 20px;
+
+            bottom: 20px;
+
+            width: 3px;
+
+            background:
+                linear-gradient(
+                    #10b981,
+                    #3b82f6,
+                    #dbeafe
+                );
+
+            border-radius: 10px;
+
+        }
+
+
+        .timeline-item {
+
+            position: relative;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .timeline-dot {
+
+            position: absolute;
+
+            left: -30px;
+
+            top: 18px;
+
+            width: 22px;
+
+            height: 22px;
+
+            border-radius: 50%;
+
+            background: #10b981;
+
+            border:
+                4px solid white;
+
+            box-shadow:
+                0 0 0 3px #d1fae5;
+
+            z-index: 2;
+
+        }
+
+
+        .timeline-item.current
+        .timeline-dot {
+
+            background: #2563eb;
+
+            box-shadow:
+                0 0 0 4px #dbeafe;
+
+        }
+
+
+        .timeline-content {
+
+            padding:
+                20px 22px;
+
+            border-radius: 17px;
+
+            background:
+                #f8fffc;
+
+            border:
+                1px solid #d1fae5;
+
+        }
+
+
+        .timeline-item.current
+        .timeline-content {
+
+            background:
+                #eff6ff;
+
+            border-color:
+                #bfdbfe;
+
+        }
+
+
+        .timeline-title {
+
+            font-size: 1rem;
+
+            font-weight: 900;
+
+            margin-bottom: 7px;
+
+        }
+
+
+        .timeline-description {
+
+            color: #64748b;
+
+            line-height: 1.6;
+
+            font-size: 0.85rem;
+
+        }
+
+
+        /* ================================
+           EVIDENCE MODAL
+        ================================= */
+
+        .modal {
+
+            position: fixed;
+
+            inset: 0;
+
+            background:
+                rgba(15,23,42,0.58);
+
+            backdrop-filter:
+                blur(8px);
+
+            display: none;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 20px;
+
+            z-index: 9999;
+
+        }
+
+
+        .modal.show {
+
+            display: flex;
+
+        }
+
+
+        .modal-card {
+
+            width:
+                min(500px, 100%);
+
+            background: white;
+
+            border-radius: 25px;
+
+            padding: 28px;
+
+            box-shadow:
+                0 30px 80px
+                rgba(15,23,42,0.25);
+
+            animation:
+                modalOpen 0.25s ease;
+
+        }
+
+
+        @keyframes modalOpen {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    scale(0.94)
+                    translateY(15px);
+
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    scale(1)
+                    translateY(0);
+
+            }
+
+        }
+
+
+        .modal-top {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .modal-top h2 {
+
+            color: #075985;
+
+        }
+
+
+        .close-btn {
+
+            width: 35px;
+
+            height: 35px;
+
+            border: none;
+
+            border-radius: 50%;
+
+            background: #f1f5f9;
+
+            cursor: pointer;
+
+            font-size: 1rem;
+
+        }
+
+
+        .evidence-preview {
+
+            height: 240px;
+
+            border:
+                2px dashed #bae6fd;
+
+            border-radius: 18px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f0fbff,
+                    #eff6ff
+                );
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 10px;
+
+            color: #075985;
+
+            margin-bottom: 18px;
+
+        }
+
+
+        .evidence-icon {
+
+            width: 65px;
+
+            height: 65px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 18px;
+
+            background: white;
+
+            font-size: 1.8rem;
+
+            box-shadow:
+                0 8px 20px
+                rgba(14,165,233,0.12);
+
+        }
+
+
+        .evidence-preview small {
+
+            color: #64748b;
+
+        }
+
+
+        .modal-info {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 10px;
+
+            margin-bottom: 18px;
+
+        }
+
+
+        .modal-info div {
+
+            background: #f8fafc;
+
+            padding: 13px;
+
+            border-radius: 12px;
+
+        }
+
+
+        .modal-info span {
+
+            display: block;
+
+            color: #94a3b8;
+
+            font-size: 0.62rem;
+
+            font-weight: 900;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .modal-info strong {
+
+            font-size: 0.75rem;
+
+        }
+
+
+        .modal-main-btn {
+
+            width: 100%;
+
+            height: 46px;
+
+            border: none;
+
+            border-radius: 12px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #087ea4,
+                    #2563eb
+                );
+
+            color: white;
+
+            font-weight: 900;
+
+            cursor: pointer;
+
+        }
+
+
+        /* ================================
+           LOCATION
+        ================================= */
+
+        .map-preview {
+
+            height: 280px;
+
+            border-radius: 18px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #dff9ff,
+                    #e0e7ff
+                );
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            flex-direction: column;
+
+            gap: 10px;
+
+            color: #075985;
+
+            margin-bottom: 18px;
+
+            border:
+                1px solid #bfdbfe;
+
+        }
+
+
+        .map-icon {
+
+            font-size: 3rem;
+
+        }
+
+
+        /* ================================
+           FOOTER
+        ================================= */
+
+        footer {
+
+            text-align: center;
+
+            padding: 25px;
+
+            color: #94a3b8;
+
+            font-size: 0.8rem;
+
+        }
+
+
+        /* ================================
+           RESPONSIVE
+        ================================= */
+
+        @media (max-width: 900px) {
+
+            .navbar {
+
+                padding: 0 4%;
+
+            }
+
+
+            nav a {
+
+                padding:
+                    10px;
+
+                font-size: 0.8rem;
+
+            }
+
+
+            .tracking-actions {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+            }
+
+        }
+
+
+        @media (max-width: 650px) {
+
+            .navbar {
+
+                height: auto;
+
+                min-height: 80px;
+
+                flex-wrap: wrap;
+
+                gap: 10px;
+
+                padding:
+                    15px 5%;
+
+            }
+
+
+            nav {
+
+                order: 3;
+
+                width: 100%;
+
+                justify-content: center;
+
+                overflow-x: auto;
+
+            }
+
+
+            .language-box {
+
+                margin-left: auto;
+
+            }
+
+
+            .page {
+
+                margin-top: 20px;
+
+                padding:
+                    0 12px 50px;
+
+            }
+
+
+            .tracking-card {
+
+                padding: 22px;
+
+                border-radius: 22px;
+
+            }
+
+
+            .search-box {
+
+                flex-direction: column;
+
+                padding: 8px;
+
+            }
+
+
+            .search-box input {
+
+                width: 100%;
+
+            }
+
+
+            .track-btn {
+
+                width: 100%;
+
+            }
+
+
+            .complaint-header {
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+            }
+
+
+            .info-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .tracking-actions {
+
+                grid-template-columns: 1fr;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================
+     NAVBAR
+========================================= -->
+
+<header class="navbar">
+
+
+    <div class="logo">
+
+        <div class="logo-icon">
+            💧
+        </div>
+
+        <span>
+            JalSahay
+        </span>
+
+    </div>
+
+
+    <nav>
+
+        <a href="index.html">
+            <span data-nav="home">
+                Home
+            </span>
+        </a>
+
+        <a href="index.html#report">
+            <span data-nav="report">
+                Report Issue
+            </span>
+        </a>
+
+        <a
+            href="tracking.html"
+            class="active"
+        >
+            <span data-nav="track">
+                Track Complaint
+            </span>
+        </a>
+
+        <a href="authority.html">
+            <span data-nav="authority">
+                Authority
+            </span>
+        </a>
+
+    </nav>
+    
+        <button class="dark-mode-btn" onclick="toggleDarkMode()" id="darkModeBtn">
+        
+        </button>
+
+    <div class="language-box">
+
+        <span>🌐</span>
+
+        <select
+            id="languageSelector"
+            onchange="changeLanguage(this.value)"
+        >
+
+            <option value="en">
+                English
+            </option>
+
+            <option value="hi">
+                हिंदी
+            </option>
+
+            <option value="mr">
+                मराठी
+            </option>
+
+            <option value="hinglish">
+                Hinglish
+            </option>
+
+        </select>
+
+    </div>
+
+
+</header>
+
+
+
+<!-- =========================================
+     MAIN
+========================================= -->
+
+<main class="page">
+
+
+<div class="tracking-card">
+
+
+    <div class="page-label"
+         data-key="trackingLabel">
+
+        🔎 COMPLAINT TRACKING
+
+    </div>
+
+
+    <h1
+        class="page-title"
+        data-key="trackingTitle"
+    >
+
+        Track Your Complaint
+
+    </h1>
+
+
+    <p
+        class="page-description"
+        data-key="trackingDescription"
+    >
+
+        Enter your complaint number to see
+        the latest status of your water issue.
+
+    </p>
+
+
+
+    <!-- SEARCH -->
+
+    <div class="search-box">
+
+        <input
+            id="complaintInput"
+            type="text"
+            placeholder="Example: JAL-2026-00421"
+        >
+
+        <button
+            class="track-btn"
+            onclick="trackComplaint()"
+            data-key="trackNow"
+        >
+
+            🔎 Track Complaint
+
+        </button>
+
+    </div>
+
+
+    <div
+        class="try-text"
+        data-key="trackingExample"
+    >
+
+        💡 Try: JAL-2026-00421
+
+    </div>
+
+
+
+    <!-- COMPLAINT -->
+
+    <div class="complaint-header">
+
+
+        <div>
+
+            <div
+                class="small-label"
+                data-key="complaintNumber"
+            >
+                Complaint Number
+            </div>
+
+
+            <div class="complaint-number">
+
+                JAL-2026-00421
+
+            </div>
+
+
+            <div class="problem-name">
+
+                💧 Water Leakage
+
+            </div>
+
+        </div>
+
+
+        <div class="status-badge">
+
+            🔧
+
+            <span data-key="status">
+                In Progress
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- ACTION BUTTONS -->
+
+    <div class="tracking-actions">
+
+
+        <button
+            class="action-btn"
+            onclick="refreshStatus()"
+        >
+
+            <div class="action-icon">
+                🔄
+            </div>
+
+            <div class="action-content">
+
+                <strong data-key="refresh">
+                    Refresh Status
+                </strong>
+
+                <small data-key="refreshSmall">
+                    Get latest update
+                </small>
+
+            </div>
+
+        </button>
+
+
+
+        <button
+            class="action-btn"
+            onclick="openLocation()"
+        >
+
+            <div class="action-icon">
+                📍
+            </div>
+
+            <div class="action-content">
+
+                <strong data-key="location">
+                    View Location
+                </strong>
+
+                <small data-key="locationSmall">
+                    See complaint location
+                </small>
+
+            </div>
+
+        </button>
+
+
+
+        <button
+            class="action-btn"
+            onclick="openEvidence()"
+        >
+
+            <div class="action-icon">
+                📷
+            </div>
+
+            <div class="action-content">
+
+                <strong data-key="evidence">
+                    View Evidence
+                </strong>
+
+                <small data-key="evidenceSmall">
+                    See uploaded photo
+                </small>
+
+            </div>
+
+        </button>
+
+
+
+        <button
+            class="action-btn"
+            onclick="contactEngineer()"
+        >
+
+            <div class="action-icon">
+                📞
+            </div>
+
+            <div class="action-content">
+
+                <strong data-key="contact">
+                    Contact Engineer
+                </strong>
+
+                <small data-key="contactSmall">
+                    Get assistance
+                </small>
+
+            </div>
+
+        </button>
+
+
+    </div>
+
+
+
+    <!-- INFO -->
+
+    <div class="info-grid">
+
+
+        <div class="info-card">
+
+            <div
+                class="info-label"
+                data-key="village"
+            >
+                📍 Village
+            </div>
+
+            <div class="info-value">
+                Example Village
+            </div>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <div
+                class="info-label"
+                data-key="submittedOn"
+            >
+                📅 Submitted On
+            </div>
+
+            <div class="info-value">
+                23 Aug 2026
+            </div>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <div
+                class="info-label"
+                data-key="engineer"
+            >
+                👷 Engineer
+            </div>
+
+            <div class="info-value">
+                Rahul Patil
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- PROGRESS -->
+
+    <h2
+        class="section-title"
+        data-key="complaintProgress"
+    >
+        Complaint Progress
+    </h2>
+
+
+
+    <div class="timeline">
+
+
+        <!-- 1 -->
+
+        <div class="timeline-item">
+
+            <div class="timeline-dot">
+            </div>
+
+            <div class="timeline-content">
+
+                <div
+                    class="timeline-title"
+                    data-key="submitted"
+                >
+                    Complaint Submitted
+                </div>
+
+                <div
+                    class="timeline-description"
+                    data-key="submittedDesc"
+                >
+                    Your complaint was successfully
+                    received by JalSahay.
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- 2 -->
+
+        <div class="timeline-item">
+
+            <div class="timeline-dot">
+            </div>
+
+            <div class="timeline-content">
+
+                <div
+                    class="timeline-title"
+                    data-key="review"
+                >
+                    Under Review
+                </div>
+
+                <div
+                    class="timeline-description"
+                    data-key="reviewDesc"
+                >
+                    The authority has reviewed
+                    your complaint.
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- 3 -->
+
+        <div class="timeline-item">
+
+            <div class="timeline-dot">
+            </div>
+
+            <div class="timeline-content">
+
+                <div
+                    class="timeline-title"
+                    data-key="assigned"
+                >
+                    Engineer Assigned
+                </div>
+
+                <div
+                    class="timeline-description"
+                    data-key="assignedDesc"
+                >
+                    An engineer has been assigned
+                    to solve the problem.
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- 4 -->
+
+        <div class="timeline-item current">
+
+            <div class="timeline-dot">
+            </div>
+
+            <div class="timeline-content">
+
+                <div
+                    class="timeline-title"
+                    data-key="progress"
+                >
+                    Work In Progress
+                </div>
+
+                <div
+                    class="timeline-description"
+                    data-key="progressDesc"
+                >
+                    The assigned engineer is
+                    working on the issue.
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- 5 -->
+
+        <div class="timeline-item">
+
+            <div class="timeline-dot"
+                 style="background:#cbd5e1;
+                        box-shadow:none;">
+            </div>
+
+            <div class="timeline-content"
+                 style="background:#f8fafc;
+                        border-color:#e2e8f0;">
+
+                <div
+                    class="timeline-title"
+                    data-key="resolved"
+                >
+                    Resolved
+                </div>
+
+                <div
+                    class="timeline-description"
+                    data-key="resolvedDesc"
+                >
+                    Waiting for issue resolution.
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+</main>
+
+
+
+<footer>
+
+    <span data-key="footer">
+        💧 JalSahay — Smart water complaint
+        and maintenance platform.
+    </span>
+
+</footer>
+
+
+
+<!-- =========================================
+     EVIDENCE MODAL
+========================================= -->
+
+<div
+    id="evidenceModal"
+    class="modal"
+>
+
+    <div class="modal-card">
+
+
+        <div class="modal-top">
+
+            <h2 data-key="evidenceTitle">
+                📷 Complaint Evidence
+            </h2>
+
+            <button
+                class="close-btn"
+                onclick="closeModal('evidenceModal')"
+            >
+                ✕
+            </button>
+
+        </div>
+
+
+        <div class="evidence-preview">
+
+            <div class="evidence-icon">
+                📷
+            </div>
+
+            <strong data-key="photoTitle">
+                Complaint Photo
+            </strong>
+
+            <small data-key="photoDescription">
+                Uploaded evidence for water leakage
+            </small>
+
+        </div>
+
+
+        <div class="modal-info">
+
+            <div>
+
+                <span data-key="complaint">
+                    Complaint
+                </span>
+
+                <strong>
+                    JAL-2026-00421
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span data-key="problem">
+                    Problem
+                </span>
+
+                <strong>
+                    Water Leakage
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="modal-main-btn"
+            onclick="closeModal('evidenceModal')"
+            data-key="close"
+        >
+            Close
+        </button>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================
+     LOCATION MODAL
+========================================= -->
+
+<div
+    id="locationModal"
+    class="modal"
+>
+
+    <div class="modal-card">
+
+
+        <div class="modal-top">
+
+            <h2 data-key="locationTitle">
+                📍 Complaint Location
+            </h2>
+
+            <button
+                class="close-btn"
+                onclick="closeModal('locationModal')"
+            >
+                ✕
+            </button>
+
+        </div>
+
+
+        <div class="map-preview">
+
+            <div class="map-icon">
+                📍
+            </div>
+
+            <strong>
+                Example Village
+            </strong>
+
+            <small>
+                18.6492° N, 73.7634° E
+            </small>
+
+        </div>
+
+
+        <button
+            class="modal-main-btn"
+            onclick="closeModal('locationModal')"
+            data-key="close"
+        >
+            Close
+        </button>
+
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+/* =========================================
+   TRANSLATIONS
+========================================= */
+
+const translations = {
+
+    en: {
+
+        trackingLabel:
+            "🔎 COMPLAINT TRACKING",
+
+        trackingTitle:
+            "Track Your Complaint",
+
+        trackingDescription:
+            "Enter your complaint number to see the latest status of your water issue.",
+
+        trackingExample:
+            "💡 Try: JAL-2026-00421",
+
+        trackNow:
+            "🔎 Track Complaint",
+
+        complaintNumber:
+            "Complaint Number",
+
+        status:
+            "In Progress",
+
+        refresh:
+            "Refresh Status",
+
+        refreshSmall:
+            "Get latest update",
+
+        location:
+            "View Location",
+
+        locationSmall:
+            "See complaint location",
+
+        evidence:
+            "View Evidence",
+
+        evidenceSmall:
+            "See uploaded photo",
+
+        contact:
+            "Contact Engineer",
+
+        contactSmall:
+            "Get assistance",
+
+        village:
+            "📍 Village",
+
+        submittedOn:
+            "📅 Submitted On",
+
+        engineer:
+            "👷 Engineer",
+
+        complaintProgress:
+            "Complaint Progress",
+
+        submitted:
+            "Complaint Submitted",
+
+        submittedDesc:
+            "Your complaint was successfully received by JalSahay.",
+
+        review:
+            "Under Review",
+
+        reviewDesc:
+            "The authority has reviewed your complaint.",
+
+        assigned:
+            "Engineer Assigned",
+
+        assignedDesc:
+            "An engineer has been assigned to solve the problem.",
+
+        progress:
+            "Work In Progress",
+
+        progressDesc:
+            "The assigned engineer is working on the issue.",
+
+        resolved:
+            "Resolved",
+
+        resolvedDesc:
+            "Waiting for issue resolution.",
+
+        evidenceTitle:
+            "📷 Complaint Evidence",
+
+        photoTitle:
+            "Complaint Photo",
+
+        photoDescription:
+            "Uploaded evidence for water leakage",
+
+        complaint:
+            "Complaint",
+
+        problem:
+            "Problem",
+
+        locationTitle:
+            "📍 Complaint Location",
+
+        close:
+            "Close",
+
+        footer:
+            "💧 JalSahay — Smart water complaint and maintenance platform."
+
+    },
+
+
+    hi: {
+
+        trackingLabel:
+            "🔎 शिकायत ट्रैकिंग",
+
+        trackingTitle:
+            "अपनी शिकायत ट्रैक करें",
+
+        trackingDescription:
+            "अपनी शिकायत संख्या दर्ज करके पानी की समस्या की नवीनतम स्थिति देखें।",
+
+        trackingExample:
+            "💡 उदाहरण: JAL-2026-00421",
+
+        trackNow:
+            "🔎 शिकायत ट्रैक करें",
+
+        complaintNumber:
+            "शिकायत नंबर",
+
+        status:
+            "काम चल रहा है",
+
+        refresh:
+            "स्थिति अपडेट करें",
+
+        refreshSmall:
+            "नवीनतम जानकारी देखें",
+
+        location:
+            "स्थान देखें",
+
+        locationSmall:
+            "शिकायत का स्थान देखें",
+
+        evidence:
+            "सबूत देखें",
+
+        evidenceSmall:
+            "अपलोड की गई फोटो देखें",
+
+        contact:
+            "इंजीनियर से संपर्क करें",
+
+        contactSmall:
+            "सहायता प्राप्त करें",
+
+        village:
+            "📍 गाँव",
+
+        submittedOn:
+            "📅 शिकायत दर्ज हुई",
+
+        engineer:
+            "👷 इंजीनियर",
+
+        complaintProgress:
+            "शिकायत की प्रगति",
+
+        submitted:
+            "शिकायत दर्ज हुई",
+
+        submittedDesc:
+            "आपकी शिकायत सफलतापूर्वक JalSahay को प्राप्त हुई है।",
+
+        review:
+            "जाँच के अधीन",
+
+        reviewDesc:
+            "अधिकारी ने आपकी शिकायत की समीक्षा की है।",
+
+        assigned:
+            "इंजीनियर नियुक्त",
+
+        assignedDesc:
+            "समस्या को हल करने के लिए एक इंजीनियर नियुक्त किया गया है।",
+
+        progress:
+            "काम चल रहा है",
+
+        progressDesc:
+            "नियुक्त इंजीनियर समस्या पर काम कर रहा है।",
+
+        resolved:
+            "समस्या हल हुई",
+
+        resolvedDesc:
+            "समस्या के समाधान की प्रतीक्षा है।",
+
+        evidenceTitle:
+            "📷 शिकायत का सबूत",
+
+        photoTitle:
+            "शिकायत की फोटो",
+
+        photoDescription:
+            "पानी की लीकेज की अपलोड की गई फोटो",
+
+        complaint:
+            "शिकायत",
+
+        problem:
+            "समस्या",
+
+        locationTitle:
+            "📍 शिकायत का स्थान",
+
+        close:
+            "बंद करें",
+
+        footer:
+            "💧 JalSahay — स्मार्ट जल शिकायत और रखरखाव प्लेटफॉर्म।"
+
+    },
+
+
+    mr: {
+
+        trackingLabel:
+            "🔎 तक्रार ट्रॅकिंग",
+
+        trackingTitle:
+            "तुमची तक्रार ट्रॅक करा",
+
+        trackingDescription:
+            "तुमचा तक्रार क्रमांक टाकून पाण्याच्या समस्येची नवीनतम स्थिती पहा.",
+
+        trackingExample:
+            "💡 उदाहरण: JAL-2026-00421",
+
+        trackNow:
+            "🔎 तक्रार ट्रॅक करा",
+
+        complaintNumber:
+            "तक्रार क्रमांक",
+
+        status:
+            "काम सुरू आहे",
+
+        refresh:
+            "स्थिती अपडेट करा",
+
+        refreshSmall:
+            "नवीनतम माहिती पहा",
+
+        location:
+            "स्थान पहा",
+
+        locationSmall:
+            "तक्रारीचे स्थान पहा",
+
+        evidence:
+            "पुरावा पहा",
+
+        evidenceSmall:
+            "अपलोड केलेला फोटो पहा",
+
+        contact:
+            "अभियंत्याशी संपर्क",
+
+        contactSmall:
+            "मदत मिळवा",
+
+        village:
+            "📍 गाव",
+
+        submittedOn:
+            "📅 तक्रार नोंदवली",
+
+        engineer:
+            "👷 अभियंता",
+
+        complaintProgress:
+            "तक्रारीची प्रगती",
+
+        submitted:
+            "तक्रार नोंदवली",
+
+        submittedDesc:
+            "तुमची तक्रार JalSahay कडे यशस्वीरित्या प्राप्त झाली आहे.",
+
+        review:
+            "तपासणी सुरू आहे",
+
+        reviewDesc:
+            "अधिकाऱ्यांनी तुमच्या तक्रारीची तपासणी केली आहे.",
+
+        assigned:
+            "अभियंता नियुक्त",
+
+        assignedDesc:
+            "समस्या सोडवण्यासाठी अभियंता नियुक्त करण्यात आला आहे.",
+
+        progress:
+            "काम सुरू आहे",
+
+        progressDesc:
+            "नियुक्त अभियंता समस्येवर काम करत आहे.",
+
+        resolved:
+            "समस्या सोडवली",
+
+        resolvedDesc:
+            "समस्या सोडवण्याची प्रतीक्षा आहे.",
+
+        evidenceTitle:
+            "📷 तक्रारीचा पुरावा",
+
+        photoTitle:
+            "तक्रारीचा फोटो",
+
+        photoDescription:
+            "पाणी गळतीचा अपलोड केलेला फोटो",
+
+        complaint:
+            "तक्रार",
+
+        problem:
+            "समस्या",
+
+        locationTitle:
+            "📍 तक्रारीचे स्थान",
+
+        close:
+            "बंद करा",
+
+        footer:
+            "💧 JalSahay — स्मार्ट जल तक्रार आणि देखभाल प्लॅटफॉर्म."
+
+    },
+
+
+    hinglish: {
+
+        trackingLabel:
+            "🔎 COMPLAINT TRACKING",
+
+        trackingTitle:
+            "Apni Complaint Track Karein",
+
+        trackingDescription:
+            "Apna complaint number enter karke water problem ka latest status dekhein.",
+
+        trackingExample:
+            "💡 Try: JAL-2026-00421",
+
+        trackNow:
+            "🔎 Complaint Track Karein",
+
+        complaintNumber:
+            "Complaint Number",
+
+        status:
+            "Kaam Chal Raha Hai",
+
+        refresh:
+            "Status Refresh Karein",
+
+        refreshSmall:
+            "Latest update dekhein",
+
+        location:
+            "Location Dekhein",
+
+        locationSmall:
+            "Complaint location dekhein",
+
+        evidence:
+            "Evidence Dekhein",
+
+        evidenceSmall:
+            "Uploaded photo dekhein",
+
+        contact:
+            "Engineer Se Contact",
+
+        contactSmall:
+            "Assistance lein",
+
+        village:
+            "📍 Gaon",
+
+        submittedOn:
+            "📅 Complaint Submit Hui",
+
+        engineer:
+            "👷 Engineer",
+
+        complaintProgress:
+            "Complaint Progress",
+
+        submitted:
+            "Complaint Submit Hui",
+
+        submittedDesc:
+            "Aapki complaint successfully JalSahay ko receive ho gayi hai.",
+
+        review:
+            "Review Mein Hai",
+
+        reviewDesc:
+            "Authority ne aapki complaint review kar li hai.",
+
+        assigned:
+            "Engineer Assign Ho Gaya",
+
+        assignedDesc:
+            "Problem solve karne ke liye engineer assign kiya gaya hai.",
+
+        progress:
+            "Kaam Chal Raha Hai",
+
+        progressDesc:
+            "Assigned engineer problem par kaam kar raha hai.",
+
+        resolved:
+            "Problem Solve Ho Gayi",
+
+        resolvedDesc:
+            "Problem resolution ka wait hai.",
+
+        evidenceTitle:
+            "📷 Complaint Evidence",
+
+        photoTitle:
+            "Complaint Photo",
+
+        photoDescription:
+            "Water leakage ki uploaded photo",
+
+        complaint:
+            "Complaint",
+
+        problem:
+            "Problem",
+
+        locationTitle:
+            "📍 Complaint Location",
+
+        close:
+            "Close",
+
+        footer:
+            "💧 JalSahay — Smart water complaint aur maintenance platform."
+
+    }
+
+};
+
+
+
+/* =========================================
+   CHANGE LANGUAGE
+========================================= */
+
+function changeLanguage(language) {
+
+    const data =
+        translations[language] ||
+        translations.en;
+
+
+    document
+        .querySelectorAll("[data-key]")
+        .forEach(element => {
+
+            const key =
+                element.getAttribute("data-key");
+
+            if (data[key]) {
+
+                element.innerHTML =
+                    data[key];
+
+            }
+
+        });
+
+
+    const input =
+        document.getElementById(
+            "complaintInput"
+        );
+
+
+    const placeholders = {
+
+        en:
+            "Example: JAL-2026-00421",
+
+        hi:
+            "उदाहरण: JAL-2026-00421",
+
+        mr:
+            "उदाहरण: JAL-2026-00421",
+
+        hinglish:
+            "Example: JAL-2026-00421"
+
+    };
+
+
+    input.placeholder =
+        placeholders[language];
+
+
+    localStorage.setItem(
+        "jalsahayLanguage",
+        language
+    );
+
+}
+
+
+
+/* =========================================
+   LOAD LANGUAGE
+========================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        const saved =
+            localStorage.getItem(
+                "jalsahayLanguage"
+            ) || "en";
+
+
+        document
+            .getElementById(
+                "languageSelector"
+            )
+            .value = saved;
+
+
+        changeLanguage(saved);
+
+    }
+);
+
+
+
+/* =========================================
+   TRACK COMPLAINT
+========================================= */
+
+function trackComplaint() {
+
+    const input =
+        document
+        .getElementById(
+            "complaintInput"
+        );
+
+
+    if (!input.value.trim()) {
+
+        alert(
+            "Please enter your complaint number."
+        );
+
+        return;
+
+    }
+
+
+    alert(
+        "Complaint found! Showing latest status."
+    );
+
+}
+
+
+
+/* =========================================
+   REFRESH
+========================================= */
+
+function refreshStatus() {
+
+    const button =
+        event.currentTarget;
+
+
+    button.style.transform =
+        "scale(0.97)";
+
+
+    setTimeout(() => {
+
+        button.style.transform =
+            "";
+
+        alert(
+            "Status updated successfully!"
+        );
+
+    }, 250);
+
+}
+
+
+
+/* =========================================
+   EVIDENCE
+========================================= */
+
+function openEvidence() {
+
+    document
+        .getElementById(
+            "evidenceModal"
+        )
+        .classList.add("show");
+
+}
+
+
+
+/* =========================================
+   LOCATION
+========================================= */
+
+function openLocation() {
+
+    document
+        .getElementById(
+            "locationModal"
+        )
+        .classList.add("show");
+
+}
+
+
+
+/* =========================================
+   CLOSE MODAL
+========================================= */
+
+function closeModal(id) {
+
+    document
+        .getElementById(id)
+        .classList.remove("show");
+
+}
+
+
+
+/* =========================================
+   CONTACT ENGINEER
+========================================= */
+
+function contactEngineer() {
+
+    alert(
+        "Engineer Rahul Patil will contact you shortly."
+    );
+
+}
+
+
+
+/* =========================================
+   CLOSE MODAL WHEN CLICKING OUTSIDE
+========================================= */
+
+document.addEventListener(
+    "click",
+    function(event) {
+
+        if (
+            event.target.classList
+            .contains("modal")
+        ) {
+
+            event.target
+                .classList
+                .remove("show");
+
+        }
+
+    }
+);
+
+</script>
+
+<!-- =========================================
+     JALSAHAY DARK MODE
+========================================= -->
+
+<style>
+
+    /* Dark mode button */
+    #darkModeButton {
+        position: fixed;
+        top: 105px;
+        right: 30px;
+        width: 48px;
+        height: 48px;
+        border: 1px solid #dbeafe;
+        border-radius: 50%;
+        background: white;
+        font-size: 21px;
+        cursor: pointer;
+        z-index: 99999;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+
+        transition: all 0.3s ease;
+    }
+
+    #darkModeButton:hover {
+        transform: scale(1.08);
+    }
+
+
+    /* =====================================
+       DARK MODE
+    ===================================== */
+
+    body.dark-mode {
+        background: #0f172a !important;
+        color: #e2e8f0 !important;
+    }
+
+
+    /* Main backgrounds */
+
+    body.dark-mode main,
+    body.dark-mode section,
+    body.dark-mode article,
+    body.dark-mode aside {
+        color: #e2e8f0;
+    }
+
+
+    /* Navbar */
+
+    body.dark-mode .navbar {
+        background: #111827 !important;
+        border-bottom: 1px solid #334155 !important;
+    }
+
+
+    body.dark-mode .logo {
+        color: #7dd3fc !important;
+    }
+
+
+    body.dark-mode nav a {
+        color: #cbd5e1 !important;
+    }
+
+
+    body.dark-mode nav a:hover {
+        color: #7dd3fc !important;
+        background: #1e293b !important;
+    }
+
+
+    body.dark-mode nav a.active {
+        background: #164e63 !important;
+        color: #7dd3fc !important;
+    }
+
+
+    /* Main tracking card */
+
+    body.dark-mode .tracking-card {
+        background: #111827 !important;
+        border-color: #334155 !important;
+
+        box-shadow:
+            0 20px 60px rgba(0,0,0,0.35) !important;
+    }
+
+
+    /* Headings */
+
+    body.dark-mode h1,
+    body.dark-mode h2,
+    body.dark-mode h3,
+    body.dark-mode h4 {
+        color: #f1f5f9 !important;
+    }
+
+
+    body.dark-mode p {
+        color: #94a3b8;
+    }
+
+
+    /* Search area */
+
+    body.dark-mode input {
+        background: #1e293b !important;
+        color: #f8fafc !important;
+        border-color: #475569 !important;
+    }
+
+
+    body.dark-mode input::placeholder {
+        color: #64748b !important;
+    }
+
+
+    /* Select */
+
+    body.dark-mode select {
+        background: #1e293b !important;
+        color: #f8fafc !important;
+        border-color: #475569 !important;
+    }
+
+
+    /* Complaint information */
+
+    body.dark-mode .complaint-header {
+        border-color: #334155 !important;
+    }
+
+
+    body.dark-mode .complaint-number {
+        color: #7dd3fc !important;
+    }
+
+
+    body.dark-mode .problem-name {
+        color: #94a3b8 !important;
+    }
+
+
+    /* Status */
+
+    body.dark-mode .status-badge {
+        background: #172554 !important;
+        color: #93c5fd !important;
+        border-color: #2563eb !important;
+    }
+
+
+    /* Action buttons */
+
+    body.dark-mode .action-btn {
+        background: #1e293b !important;
+        color: #e2e8f0 !important;
+        border-color: #475569 !important;
+    }
+
+
+    body.dark-mode .action-btn:hover {
+        background: #263449 !important;
+        border-color: #0ea5e9 !important;
+    }
+
+
+    body.dark-mode .action-content strong {
+        color: #f1f5f9 !important;
+    }
+
+
+    body.dark-mode .action-content small {
+        color: #94a3b8 !important;
+    }
+
+
+    /* Information cards */
+
+    body.dark-mode .info-card {
+        background: #1e293b !important;
+        border-color: #334155 !important;
+    }
+
+
+    body.dark-mode .info-label {
+        color: #94a3b8 !important;
+    }
+
+
+    body.dark-mode .info-value {
+        color: #f1f5f9 !important;
+    }
+
+
+    /* Progress */
+
+    body.dark-mode .section-title {
+        color: #f1f5f9 !important;
+    }
+
+
+    body.dark-mode .timeline-content {
+        background: #172033 !important;
+        border-color: #334155 !important;
+    }
+
+
+    body.dark-mode .timeline-title {
+        color: #f1f5f9 !important;
+    }
+
+
+    body.dark-mode .timeline-description {
+        color: #94a3b8 !important;
+    }
+
+
+    /* Modal */
+
+    body.dark-mode .modal-card {
+        background: #1e293b !important;
+        color: #e2e8f0 !important;
+    }
+
+
+    body.dark-mode .modal-card h2,
+    body.dark-mode .modal-card h3 {
+        color: #f1f5f9 !important;
+    }
+
+
+    body.dark-mode .close-btn {
+        background: #334155 !important;
+        color: white !important;
+    }
+
+
+    /* Language box */
+
+    body.dark-mode .language-box {
+        background: #1e293b !important;
+        border-color: #475569 !important;
+    }
+
+
+    body.dark-mode .language-box select {
+        background: transparent !important;
+        color: #f1f5f9 !important;
+    }
+
+
+    /* Footer */
+
+    body.dark-mode footer {
+        background: #0b1120 !important;
+        color: #94a3b8 !important;
+    }
+
+
+    /* Dark button */
+
+    body.dark-mode #darkModeButton {
+        background: #1e293b;
+        border-color: #475569;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    }
+
+
+    /* Smooth transition */
+
+    body,
+    .navbar,
+    .tracking-card,
+    .action-btn,
+    .info-card,
+    .modal-card,
+    input,
+    select {
+        transition:
+            background 0.3s ease,
+            color 0.3s ease,
+            border-color 0.3s ease;
+    }
+
+
+    /* Mobile */
+
+    @media (max-width: 600px) {
+
+        #darkModeButton {
+            top: 90px;
+            right: 15px;
+            width: 42px;
+            height: 42px;
+        }
+
+    }
+
+</style>
+
+
+<script>
+
+    /* =========================================
+       CREATE DARK MODE BUTTON AUTOMATICALLY
+    ========================================= */
+
+    const darkModeButton =
+        document.createElement("button");
+
+    darkModeButton.id = "darkModeButton";
+
+    darkModeButton.innerHTML = "🌙";
+
+    darkModeButton.title = "Dark Mode";
+
+    document.body.appendChild(darkModeButton);
+
+
+    /* =========================================
+       CHECK SAVED MODE
+    ========================================= */
+
+    const savedDarkMode =
+        localStorage.getItem("jalsahay-dark-mode");
+
+
+    if (savedDarkMode === "on") {
+
+        document.body.classList.add("dark-mode");
+
+        darkModeButton.innerHTML = "☀️";
+
+        darkModeButton.title = "Light Mode";
+
+    }
+
+
+    /* =========================================
+       TOGGLE DARK MODE
+    ========================================= */
+
+    darkModeButton.addEventListener(
+        "click",
+        function() {
+
+            document.body.classList.toggle(
+                "dark-mode"
+            );
+
+
+            const darkMode =
+                document.body.classList.contains(
+                    "dark-mode"
+                );
+
+
+            if (darkMode) {
+
+                darkModeButton.innerHTML = "☀️";
+
+                darkModeButton.title =
+                    "Light Mode";
+
+                localStorage.setItem(
+                    "jalsahay-dark-mode",
+                    "on"
+                );
+
+            } else {
+
+                darkModeButton.innerHTML = "🌙";
+
+                darkModeButton.title =
+                    "Dark Mode";
+
+                localStorage.setItem(
+                    "jalsahay-dark-mode",
+                    "off"
+                );
+
+            }
+
+        }
+    );
+
+</script>
+</body>
+
+</html>

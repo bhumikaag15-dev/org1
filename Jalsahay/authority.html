@@ -1,0 +1,2268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>JalSahay | Authority Control Panel</title>
+
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="style.css">
+
+
+    <!-- =====================================================
+         AUTHORITY DASHBOARD CSS
+    ====================================================== -->
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+            margin: 0;
+
+            font-family:
+                Inter,
+                Arial,
+                sans-serif;
+
+            background:
+                radial-gradient(
+                    circle at 10% 10%,
+                    rgba(6, 182, 212, 0.10),
+                    transparent 25%
+                ),
+                radial-gradient(
+                    circle at 90% 20%,
+                    rgba(37, 99, 235, 0.08),
+                    transparent 28%
+                ),
+                #f5fbfd;
+
+            color: #0f172a;
+        }
+
+
+        /* =================================================
+           NAVBAR
+        ================================================= */
+
+        .authority-navbar {
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 100;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 16px 6%;
+
+            background:
+                rgba(255,255,255,0.92);
+
+            backdrop-filter: blur(18px);
+
+            border-bottom:
+                1px solid #e2e8f0;
+
+            box-shadow:
+                0 5px 25px rgba(15,23,42,0.05);
+        }
+
+
+        .authority-logo {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            color: #075985;
+
+            font-size: 1.2rem;
+
+            font-weight: 900;
+        }
+
+
+        .authority-logo-icon {
+
+            width: 38px;
+
+            height: 38px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 12px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #06b6d4,
+                    #2563eb
+                );
+
+            color: white;
+
+            box-shadow:
+                0 8px 20px rgba(37,99,235,0.20);
+        }
+
+
+        .authority-nav {
+
+            display: flex;
+
+            gap: 8px;
+        }
+
+
+        .authority-nav a {
+
+            padding: 9px 14px;
+
+            border-radius: 10px;
+
+            color: #64748b;
+
+            text-decoration: none;
+
+            font-size: 0.82rem;
+
+            font-weight: 700;
+
+            transition: 0.2s ease;
+        }
+
+
+        .authority-nav a:hover,
+        .authority-nav a.active {
+
+            color: #075985;
+
+            background: #e0f7ff;
+        }
+
+
+        /* =================================================
+           MAIN DASHBOARD
+        ================================================= */
+
+        .authority-container {
+
+            width: min(1250px, 92%);
+
+            margin: auto;
+
+            padding: 45px 0 80px;
+        }
+
+
+        .dashboard-header {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: flex-end;
+
+            gap: 20px;
+
+            margin-bottom: 30px;
+        }
+
+
+        .dashboard-tag {
+
+            display: inline-flex;
+
+            padding: 7px 13px;
+
+            border-radius: 999px;
+
+            background: #e0f7ff;
+
+            border: 1px solid #bae6fd;
+
+            color: #075985;
+
+            font-size: 0.7rem;
+
+            font-weight: 800;
+
+            letter-spacing: 0.5px;
+        }
+
+
+        .dashboard-header h1 {
+
+            margin: 12px 0 5px;
+
+            font-size:
+                clamp(2rem, 4vw, 3rem);
+
+            letter-spacing: -1.5px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #0f172a,
+                    #075985
+                );
+
+            -webkit-background-clip: text;
+
+            background-clip: text;
+
+            -webkit-text-fill-color: transparent;
+        }
+
+
+        .dashboard-header p {
+
+            margin: 0;
+
+            color: #64748b;
+
+            font-size: 0.9rem;
+        }
+
+
+        .live-status {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            padding: 10px 14px;
+
+            background: white;
+
+            border: 1px solid #dbeafe;
+
+            border-radius: 12px;
+
+            color: #166534;
+
+            font-size: 0.75rem;
+
+            font-weight: 800;
+
+            box-shadow:
+                0 5px 15px rgba(15,23,42,0.04);
+        }
+
+
+        .live-dot {
+
+            width: 8px;
+
+            height: 8px;
+
+            border-radius: 50%;
+
+            background: #22c55e;
+
+            box-shadow:
+                0 0 0 5px rgba(34,197,94,0.12);
+
+            animation: livePulse 1.8s infinite;
+        }
+
+
+        @keyframes livePulse {
+
+            50% {
+                box-shadow:
+                    0 0 0 8px rgba(34,197,94,0.04);
+            }
+
+        }
+
+
+        /* =================================================
+           METRICS
+        ================================================= */
+
+        .dashboard-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(5, 1fr);
+
+            gap: 15px;
+
+            margin-bottom: 30px;
+        }
+
+
+        .metric-card {
+
+            position: relative;
+
+            overflow: hidden;
+
+            padding: 21px;
+
+            background:
+                rgba(255,255,255,0.92);
+
+            border:
+                1px solid #e2e8f0;
+
+            border-radius: 18px;
+
+            box-shadow:
+                0 8px 25px rgba(15,23,42,0.05);
+
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+
+        .metric-card:hover {
+
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 15px 35px rgba(15,23,42,0.08);
+        }
+
+
+        .metric-card::before {
+
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+
+            left: 0;
+
+            width: 100%;
+
+            height: 4px;
+
+            background: #cbd5e1;
+        }
+
+
+        .metric-card.pending::before {
+            background: #f59e0b;
+        }
+
+
+        .metric-card.progress::before {
+            background: #3b82f6;
+        }
+
+
+        .metric-card.resolved::before {
+            background: #10b981;
+        }
+
+
+        .metric-card.emergency::before {
+            background: #ef4444;
+        }
+
+
+        .metric-icon {
+
+            width: 38px;
+
+            height: 38px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            margin-bottom: 14px;
+
+            border-radius: 11px;
+
+            background: #f1f5f9;
+
+            font-size: 1rem;
+        }
+
+
+        .metric-card.pending .metric-icon {
+            background: #fffbeb;
+        }
+
+
+        .metric-card.progress .metric-icon {
+            background: #eff6ff;
+        }
+
+
+        .metric-card.resolved .metric-icon {
+            background: #ecfdf5;
+        }
+
+
+        .metric-card.emergency .metric-icon {
+            background: #fef2f2;
+        }
+
+
+        .metric-label {
+
+            color: #64748b;
+
+            font-size: 0.68rem;
+
+            font-weight: 800;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.5px;
+        }
+
+
+        .metric-num {
+
+            margin-top: 5px;
+
+            color: #0f172a;
+
+            font-size: 1.8rem;
+
+            font-weight: 900;
+        }
+
+
+        .metric-change {
+
+            margin-top: 6px;
+
+            color: #94a3b8;
+
+            font-size: 0.68rem;
+        }
+
+
+        /* =================================================
+           MAIN PANELS
+        ================================================= */
+
+        .panel-row {
+
+            display: grid;
+
+            grid-template-columns:
+                minmax(0, 1.5fr)
+                minmax(330px, 0.9fr);
+
+            gap: 22px;
+        }
+
+
+        .dashboard-panel {
+
+            padding: 22px;
+
+            background:
+                rgba(255,255,255,0.95);
+
+            border:
+                1px solid #e2e8f0;
+
+            border-radius: 22px;
+
+            box-shadow:
+                0 10px 30px rgba(15,23,42,0.05);
+        }
+
+
+        .panel-heading {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 10px;
+
+            margin-bottom: 20px;
+        }
+
+
+        .panel-heading h2 {
+
+            margin: 0;
+
+            color: #0f172a;
+
+            font-size: 1.05rem;
+        }
+
+
+        .panel-heading p {
+
+            margin: 4px 0 0;
+
+            color: #94a3b8;
+
+            font-size: 0.7rem;
+        }
+
+
+        .queue-count {
+
+            padding: 6px 10px;
+
+            border-radius: 999px;
+
+            background: #eff6ff;
+
+            color: #2563eb;
+
+            font-size: 0.68rem;
+
+            font-weight: 800;
+        }
+
+
+        /* =================================================
+           COMPLAINT LIST
+        ================================================= */
+
+        .complaint-list {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 13px;
+        }
+
+
+        .complaint-item {
+
+            position: relative;
+
+            padding: 18px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #ffffff,
+                    #f8fcfe
+                );
+
+            border:
+                1px solid #e2e8f0;
+
+            border-left:
+                4px solid #cbd5e1;
+
+            border-radius: 16px;
+
+            transition: 0.25s ease;
+        }
+
+
+        .complaint-item:hover {
+
+            transform: translateX(4px);
+
+            border-color: #bae6fd;
+
+            box-shadow:
+                0 10px 25px rgba(6,182,212,0.07);
+        }
+
+
+        .complaint-item.high {
+            border-left-color: #ef4444;
+        }
+
+
+        .complaint-item.medium {
+            border-left-color: #f59e0b;
+        }
+
+
+        .item-header {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 10px;
+
+            margin-bottom: 9px;
+        }
+
+
+        .comp-id {
+
+            color: #075985;
+
+            font-size: 0.82rem;
+
+            font-weight: 900;
+        }
+
+
+        .badge {
+
+            display: inline-flex;
+
+            padding: 5px 9px;
+
+            border-radius: 999px;
+
+            font-size: 0.64rem;
+
+            font-weight: 800;
+
+            white-space: nowrap;
+        }
+
+
+        .badge.ai {
+
+            background: #eef2ff;
+
+            color: #4f46e5;
+
+            border: 1px solid #c7d2fe;
+        }
+
+
+        .badge.dup {
+
+            background: #fffbeb;
+
+            color: #b45309;
+
+            border: 1px solid #fde68a;
+        }
+
+
+        .complaint-item p {
+
+            margin: 0 0 10px;
+
+            color: #475569;
+
+            font-size: 0.82rem;
+
+            line-height: 1.6;
+        }
+
+
+        .coordinates {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 6px;
+
+            color: #64748b;
+
+            font-size: 0.7rem;
+        }
+
+
+        .recommendation {
+
+            padding: 9px 11px;
+
+            margin-top: 10px;
+
+            border-radius: 10px;
+
+            background: #fffbeb;
+
+            color: #92400e;
+
+            font-size: 0.7rem;
+
+            line-height: 1.5;
+        }
+
+
+        .complaint-actions {
+
+            display: flex;
+
+            gap: 8px;
+
+            margin-top: 14px;
+
+            flex-wrap: wrap;
+        }
+
+
+        .small-action {
+
+            padding: 8px 11px;
+
+            border: 1px solid #dbeafe;
+
+            border-radius: 9px;
+
+            background: white;
+
+            color: #075985;
+
+            font-size: 0.68rem;
+
+            font-weight: 800;
+
+            cursor: pointer;
+
+            transition: 0.2s ease;
+        }
+
+
+        .small-action:hover {
+
+            background: #e0f7ff;
+
+            transform: translateY(-2px);
+        }
+
+
+        .small-action.assign {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #087ea4,
+                    #2563eb
+                );
+
+            color: white;
+
+            border: none;
+        }
+
+
+        /* =================================================
+           MAP
+        ================================================= */
+
+        .map-box {
+
+            position: relative;
+
+            height: 245px;
+
+            overflow: hidden;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            margin-bottom: 18px;
+
+            border-radius: 17px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #dff6fb,
+                    #e8f0ff
+                );
+
+            border: 1px solid #bae6fd;
+
+            color: #475569;
+
+            font-size: 0.78rem;
+
+            font-weight: 700;
+        }
+
+
+        .map-grid {
+
+            position: absolute;
+
+            inset: 0;
+
+            opacity: 0.35;
+
+            background-image:
+                linear-gradient(
+                    #94a3b8 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    #94a3b8 1px,
+                    transparent 1px
+                );
+
+            background-size: 35px 35px;
+        }
+
+
+        .map-center {
+
+            position: relative;
+
+            z-index: 2;
+
+            width: 80px;
+
+            height: 80px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background:
+                rgba(255,255,255,0.75);
+
+            border:
+                1px solid rgba(255,255,255,0.9);
+
+            box-shadow:
+                0 10px 30px rgba(15,23,42,0.12);
+
+            font-size: 2rem;
+        }
+
+
+        .map-marker {
+
+            position: absolute;
+
+            z-index: 3;
+
+            font-size: 1.5rem;
+
+            animation: markerFloat 2s infinite;
+        }
+
+
+        .marker-one {
+            top: 30%;
+            left: 27%;
+        }
+
+
+        .marker-two {
+            top: 58%;
+            left: 62%;
+        }
+
+
+        .marker-three {
+            top: 25%;
+            right: 20%;
+        }
+
+
+        @keyframes markerFloat {
+
+            50% {
+                transform: translateY(-5px);
+            }
+
+        }
+
+
+        .map-overlay {
+
+            position: absolute;
+
+            z-index: 4;
+
+            bottom: 12px;
+
+            left: 12px;
+
+            right: 12px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            padding: 9px 11px;
+
+            border-radius: 10px;
+
+            background:
+                rgba(255,255,255,0.88);
+
+            backdrop-filter: blur(10px);
+
+            font-size: 0.65rem;
+
+            font-weight: 800;
+
+            color: #475569;
+        }
+
+
+        /* =================================================
+           ASSIGNMENT
+        ================================================= */
+
+        .assignment-panel {
+
+            margin-top: 5px;
+        }
+
+
+        .form-group {
+
+            margin-bottom: 15px;
+        }
+
+
+        .form-group label {
+
+            display: block;
+
+            margin-bottom: 6px;
+
+            color: #475569;
+
+            font-size: 0.7rem;
+
+            font-weight: 800;
+        }
+
+
+        .form-group input,
+        .form-group select {
+
+            width: 100%;
+
+            min-height: 45px;
+
+            padding: 0 12px;
+
+            border: 1px solid #dbeafe;
+
+            border-radius: 11px;
+
+            outline: none;
+
+            background: #f8fafc;
+
+            color: #0f172a;
+
+            font-size: 0.78rem;
+
+            font-weight: 600;
+        }
+
+
+        .form-group input:focus,
+        .form-group select:focus {
+
+            border-color: #38bdf8;
+
+            box-shadow:
+                0 0 0 4px rgba(6,182,212,0.08);
+        }
+
+
+        .btn-primary {
+
+            width: 100%;
+
+            min-height: 47px;
+
+            border: none;
+
+            border-radius: 11px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #087ea4,
+                    #2563eb
+                );
+
+            color: white;
+
+            font-size: 0.76rem;
+
+            font-weight: 900;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 8px 20px rgba(37,99,235,0.18);
+
+            transition: 0.25s ease;
+        }
+
+
+        .btn-primary:hover {
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 12px 27px rgba(37,99,235,0.25);
+        }
+
+
+        /* =================================================
+           SLA CARD
+        ================================================= */
+
+        .sla-card {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 13px;
+
+            margin-top: 15px;
+
+            padding: 15px;
+
+            border-radius: 14px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #fff7ed,
+                    #fffbeb
+                );
+
+            border: 1px solid #fed7aa;
+        }
+
+
+        .sla-icon {
+
+            width: 40px;
+
+            height: 40px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 11px;
+
+            background: white;
+
+            font-size: 1.1rem;
+        }
+
+
+        .sla-card strong {
+
+            display: block;
+
+            color: #92400e;
+
+            font-size: 0.78rem;
+        }
+
+
+        .sla-card small {
+
+            color: #b45309;
+
+            font-size: 0.65rem;
+        }
+
+
+        /* =================================================
+           RESPONSIVE
+        ================================================= */
+
+        @media (max-width: 1050px) {
+
+            .dashboard-grid {
+
+                grid-template-columns:
+                    repeat(3, 1fr);
+
+            }
+
+            .panel-row {
+
+                grid-template-columns: 1fr;
+
+            }
+
+        }
+
+
+        @media (max-width: 700px) {
+
+            .authority-navbar {
+
+                padding: 13px 4%;
+
+                flex-wrap: wrap;
+
+                gap: 10px;
+
+            }
+
+
+            .authority-nav {
+
+                width: 100%;
+
+                overflow-x: auto;
+
+            }
+
+
+            .authority-container {
+
+                width: 92%;
+
+                padding-top: 30px;
+
+            }
+
+
+            .dashboard-header {
+
+                align-items: flex-start;
+
+                flex-direction: column;
+
+            }
+
+
+            .dashboard-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+            }
+
+
+            .item-header {
+
+                align-items: flex-start;
+
+                flex-direction: column;
+
+            }
+
+        }
+
+
+        @media (max-width: 450px) {
+
+            .dashboard-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .dashboard-panel {
+
+                padding: 16px;
+
+            }
+
+
+            .dashboard-header h1 {
+
+                font-size: 2rem;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+
+<body>
+
+
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
+
+<header class="authority-navbar">
+
+    <div class="authority-logo">
+
+        <div class="authority-logo-icon">
+            💧
+        </div>
+
+        JalSahay Control
+
+    </div>
+
+
+    <nav class="authority-nav">
+
+        <a href="index.html">
+            Report Issue
+        </a>
+
+        <a href="tracking.html">
+            Track Status
+        </a>
+
+        <a href="authority.html"
+           class="active">
+            Authority Portal
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<!-- =====================================================
+     DASHBOARD
+===================================================== -->
+
+<main class="authority-container">
+
+
+    <!-- HEADER -->
+
+    <div class="dashboard-header">
+
+        <div>
+
+            <span class="dashboard-tag">
+                🛡️ AUTHORITY CONTROL CENTER
+            </span>
+
+
+            <h1>
+                Water Operations Dashboard
+            </h1>
+
+
+            <p>
+                Monitor complaints, prioritize emergencies
+                and dispatch field engineers.
+            </p>
+
+        </div>
+
+
+        <div class="live-status">
+
+            <span class="live-dot"></span>
+
+            System Live
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =================================================
+         METRICS
+    ================================================= -->
+
+    <div class="dashboard-grid">
+
+
+        <div class="metric-card">
+
+            <div class="metric-icon">
+                📊
+            </div>
+
+            <div class="metric-label">
+                Total Cases
+            </div>
+
+            <div class="metric-num">
+                247
+            </div>
+
+            <div class="metric-change">
+                All reported complaints
+            </div>
+
+        </div>
+
+
+
+        <div class="metric-card pending">
+
+            <div class="metric-icon">
+                ⏳
+            </div>
+
+            <div class="metric-label">
+                Pending
+            </div>
+
+            <div class="metric-num">
+                62
+            </div>
+
+            <div class="metric-change">
+                Require attention
+            </div>
+
+        </div>
+
+
+
+        <div class="metric-card progress">
+
+            <div class="metric-icon">
+                🔧
+            </div>
+
+            <div class="metric-label">
+                In Progress
+            </div>
+
+            <div class="metric-num">
+                38
+            </div>
+
+            <div class="metric-change">
+                Field teams active
+            </div>
+
+        </div>
+
+
+
+        <div class="metric-card resolved">
+
+            <div class="metric-icon">
+                ✅
+            </div>
+
+            <div class="metric-label">
+                Resolved
+            </div>
+
+            <div class="metric-num">
+                147
+            </div>
+
+            <div class="metric-change">
+                Successfully closed
+            </div>
+
+        </div>
+
+
+
+        <div class="metric-card emergency">
+
+            <div class="metric-icon">
+                🚨
+            </div>
+
+            <div class="metric-label">
+                Emergency
+            </div>
+
+            <div class="metric-num"
+                 style="color:#ef4444;">
+                8
+            </div>
+
+            <div class="metric-change">
+                High priority cases
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =================================================
+         PANELS
+    ================================================= -->
+
+    <div class="panel-row">
+
+
+        <!-- =================================================
+             LEFT — COMPLAINT QUEUE
+        ================================================= -->
+
+        <section class="dashboard-panel">
+
+
+            <div class="panel-heading">
+
+                <div>
+
+                    <h2>
+                        Incoming Queue Operations
+                    </h2>
+
+                    <p>
+                        AI-prioritized complaints requiring action
+                    </p>
+
+                </div>
+
+
+                <span class="queue-count">
+                    2 ACTIVE
+                </span>
+
+            </div>
+
+
+
+            <div class="complaint-list">
+
+
+                <!-- CASE 1 -->
+
+                <div class="complaint-item high">
+
+
+                    <div class="item-header">
+
+                        <span class="comp-id">
+                            JAL-2026-00421
+                        </span>
+
+
+                        <span class="badge ai">
+                            🤖 AI Priority: Emergency
+                        </span>
+
+                    </div>
+
+
+                    <p>
+                        Huge pipe leakage near the college gate.
+                        Water has been flowing continuously
+                        for two hours.
+                    </p>
+
+
+                    <div class="coordinates">
+
+                        📍
+
+                        18.6492° N,
+                        73.7634° E
+
+                    </div>
+
+
+                    <div class="complaint-actions">
+
+                        <button
+                            class="small-action"
+                            onclick="viewComplaint('JAL-2026-00421')">
+
+                            👁 View Details
+
+                        </button>
+
+
+                        <button
+                            class="small-action assign"
+                            onclick="focusAssignment()">
+
+                            👷 Assign Engineer
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- CASE 2 -->
+
+                <div class="complaint-item medium">
+
+
+                    <div class="item-header">
+
+                        <span class="comp-id">
+                            JAL-2026-00425
+                        </span>
+
+
+                        <span class="badge dup">
+                            ⚠ 3 Clusters Detected
+                        </span>
+
+                    </div>
+
+
+                    <p>
+                        Water pipeline broken near Akurdi road,
+                        flooding the side lane.
+                    </p>
+
+
+                    <div class="recommendation">
+
+                        💡 <strong>AI Recommendation:</strong>
+
+                        Group with primary ticket
+                        JAL-2026-00421
+
+                    </div>
+
+
+                    <div class="complaint-actions">
+
+                        <button
+                            class="small-action"
+                            onclick="viewComplaint('JAL-2026-00425')">
+
+                            👁 View Details
+
+                        </button>
+
+
+                        <button
+                            class="small-action"
+                            onclick="groupComplaint()">
+
+                            🔗 Group Cases
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ADDITIONAL CASE -->
+
+                <div class="complaint-item">
+
+
+                    <div class="item-header">
+
+                        <span class="comp-id">
+                            JAL-2026-00431
+                        </span>
+
+
+                        <span
+                            class="badge"
+                            style="
+                            background:#ecfdf5;
+                            color:#047857;
+                            border:1px solid #a7f3d0;
+                            ">
+
+                            🟢 Normal
+
+                        </span>
+
+                    </div>
+
+
+                    <p>
+                        Low water pressure reported
+                        in the residential area.
+                    </p>
+
+
+                    <div class="coordinates">
+
+                        📍 Ward 12 — Akurdi
+
+                    </div>
+
+
+                    <div class="complaint-actions">
+
+                        <button
+                            class="small-action"
+                            onclick="viewComplaint('JAL-2026-00431')">
+
+                            👁 View Details
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             RIGHT — MAP + DISPATCH
+        ================================================= -->
+
+        <aside class="dashboard-panel">
+
+
+            <div class="panel-heading">
+
+                <div>
+
+                    <h2>
+                        Resource Dispatch
+                    </h2>
+
+                    <p>
+                        Assign field teams to complaints
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- MAP -->
+
+            <div
+                class="map-box"
+                id="mockMap"
+            >
+
+                <div class="map-grid"></div>
+
+
+                <div
+                    class="map-marker marker-one">
+                    📍
+                </div>
+
+
+                <div
+                    class="map-marker marker-two">
+                    📍
+                </div>
+
+
+                <div
+                    class="map-marker marker-three">
+                    🚨
+                </div>
+
+
+                <div class="map-center">
+                    🗺️
+                </div>
+
+
+                <div class="map-overlay">
+
+                    <span>
+                        📍 3 Active Hotspots
+                    </span>
+
+                    <span>
+                        Live Map
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ASSIGNMENT -->
+
+            <div class="assignment-panel">
+
+
+                <form id="dispatchForm">
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Target Ticket Reference
+                        </label>
+
+
+                        <input
+                            type="text"
+                            id="ticketReference"
+                            value="JAL-2026-00421"
+                            readonly
+                        >
+
+                    </div>
+
+
+
+                    <div class="form-group">
+
+                        <label
+                            for="engineerSelect">
+
+                            Assign Field Engineer
+
+                        </label>
+
+
+                        <select
+                            id="engineerSelect"
+                            required
+                        >
+
+                            <option value="">
+                                Select available crew...
+                            </option>
+
+                            <option value="eng_ram">
+                                Ram Patil —
+                                Water Distribution
+                            </option>
+
+                            <option value="eng_arjun">
+                                Arjun Shinde —
+                                Infrastructure Maintenance
+                            </option>
+
+                            <option value="eng_prithviraj">
+                                Prithviraj Sharma —
+                                Water Quality Lab
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <button
+                        type="submit"
+                        class="btn-primary">
+
+                        👷 Confirm Dispatch Assignment
+
+                    </button>
+
+                </form>
+
+
+
+                <!-- SLA -->
+
+                <div class="sla-card">
+
+                    <div class="sla-icon">
+                        ⏱️
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            SLA Clock Active
+                        </strong>
+
+                        <small>
+                            Emergency response target:
+                            02:00 hrs
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+    </div>
+
+</main>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+
+/* =====================================================
+   DISPATCH
+===================================================== */
+
+document
+    .getElementById("dispatchForm")
+    .addEventListener(
+        "submit",
+        function(e) {
+
+            e.preventDefault();
+
+
+            const engineer =
+                document
+                    .getElementById("engineerSelect")
+                    .selectedOptions[0]
+                    .text;
+
+
+            const ticket =
+                document
+                    .getElementById("ticketReference")
+                    .value;
+
+
+            if (
+                !document
+                    .getElementById("engineerSelect")
+                    .value
+            ) {
+
+                alert(
+                    "⚠️ Please select a field engineer."
+                );
+
+                return;
+
+            }
+
+
+            alert(
+                "✅ Dispatch Assignment Confirmed!\n\n" +
+                "Ticket: " + ticket + "\n" +
+                "Assigned to: " + engineer + "\n\n" +
+                "SLA clock is now active."
+            );
+
+        }
+    );
+
+
+
+/* =====================================================
+   VIEW COMPLAINT
+===================================================== */
+
+function viewComplaint(id) {
+
+    alert(
+        "📋 Complaint Details\n\n" +
+        "Complaint ID: " + id + "\n\n" +
+        "The complete complaint details will " +
+        "open here when the backend is connected."
+    );
+
+}
+
+
+
+/* =====================================================
+   GROUP COMPLAINT
+===================================================== */
+
+function groupComplaint() {
+
+    const confirmGroup =
+        confirm(
+            "🔗 Group these complaints?\n\n" +
+            "They appear to be related to the same " +
+            "water pipeline problem."
+        );
+
+
+    if (confirmGroup) {
+
+        alert(
+            "✅ Complaints grouped successfully.\n\n" +
+            "Primary ticket: JAL-2026-00421"
+        );
+
+    }
+
+}
+
+
+
+/* =====================================================
+   FOCUS ASSIGNMENT
+===================================================== */
+
+function focusAssignment() {
+
+    document
+        .getElementById("engineerSelect")
+        .focus();
+
+
+    document
+        .getElementById("engineerSelect")
+        .scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+
+}
+
+</script>
+
+<!-- =========================================
+     JALSAHAY GLOBAL DARK MODE
+========================================= -->
+
+<style>
+
+/* Dark Mode Button */
+#darkModeButton {
+    position: fixed;
+    top: 105px;
+    right: 30px;
+
+    width: 48px;
+    height: 48px;
+
+    border-radius: 50%;
+    border: 1px solid #dbeafe;
+
+    background: white;
+
+    font-size: 21px;
+
+    cursor: pointer;
+
+    z-index: 99999;
+
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+
+    transition: 0.3s ease;
+}
+
+#darkModeButton:hover {
+    transform: scale(1.08);
+}
+
+
+/* =========================================
+   DARK MODE BODY
+========================================= */
+
+body.dark-mode {
+    background: #0f172a !important;
+    color: #e2e8f0 !important;
+}
+
+
+/* Navbar */
+
+body.dark-mode .navbar {
+    background: #111827 !important;
+    border-color: #334155 !important;
+}
+
+body.dark-mode .logo {
+    color: #7dd3fc !important;
+}
+
+body.dark-mode nav a {
+    color: #cbd5e1 !important;
+}
+
+body.dark-mode nav a:hover {
+    background: #1e293b !important;
+    color: #7dd3fc !important;
+}
+
+body.dark-mode nav a.active {
+    background: #164e63 !important;
+    color: #7dd3fc !important;
+}
+
+
+/* =========================================
+   COMMON CARDS
+========================================= */
+
+body.dark-mode .card,
+body.dark-mode .feature-card,
+body.dark-mode .info-card,
+body.dark-mode .complaint-card,
+body.dark-mode .form-card,
+body.dark-mode .hero-card,
+body.dark-mode .service-card {
+    background: #1e293b !important;
+    border-color: #334155 !important;
+    color: #e2e8f0 !important;
+}
+
+
+/* Headings */
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4 {
+    color: #f8fafc !important;
+}
+
+
+/* Paragraphs */
+
+body.dark-mode p {
+    color: #94a3b8 !important;
+}
+
+
+/* =========================================
+   INPUTS
+========================================= */
+
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select {
+    background: #1e293b !important;
+    color: #f8fafc !important;
+    border-color: #475569 !important;
+}
+
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder {
+    color: #64748b !important;
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+body.dark-mode button {
+    color: #f8fafc;
+}
+
+body.dark-mode .btn-primary {
+    background: linear-gradient(
+        135deg,
+        #0891b2,
+        #2563eb
+    ) !important;
+
+    color: white !important;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+body.dark-mode footer {
+    background: #0b1120 !important;
+    color: #94a3b8 !important;
+}
+
+
+/* =========================================
+   LANGUAGE BOX
+========================================= */
+
+body.dark-mode .language-box {
+    background: #1e293b !important;
+    border-color: #475569 !important;
+}
+
+body.dark-mode .language-box select {
+    background: transparent !important;
+    color: #f8fafc !important;
+}
+
+
+/* =========================================
+   DARK MODE BUTTON
+========================================= */
+
+body.dark-mode #darkModeButton {
+    background: #1e293b;
+
+    border-color: #475569;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,0.4);
+}
+
+
+/* Smooth transition */
+
+body,
+.navbar,
+.card,
+.feature-card,
+.info-card,
+.form-card,
+.hero-card,
+.service-card,
+input,
+textarea,
+select {
+    transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        border-color 0.3s ease;
+}
+
+
+/* Mobile */
+
+@media(max-width:600px) {
+
+    #darkModeButton {
+        top: 90px;
+        right: 15px;
+
+        width: 42px;
+        height: 42px;
+    }
+
+}
+
+</style>
+
+
+<script>
+
+/* =========================================
+   CREATE BUTTON
+========================================= */
+
+const darkModeButton =
+    document.createElement("button");
+
+darkModeButton.id = "darkModeButton";
+
+darkModeButton.innerHTML = "🌙";
+
+darkModeButton.title = "Dark Mode";
+
+document.body.appendChild(darkModeButton);
+
+
+/* =========================================
+   LOAD SAVED MODE
+========================================= */
+
+const savedMode =
+    localStorage.getItem("jalsahay-dark-mode");
+
+
+if (savedMode === "on") {
+
+    document.body.classList.add("dark-mode");
+
+    darkModeButton.innerHTML = "☀️";
+
+    darkModeButton.title = "Light Mode";
+
+}
+
+
+/* =========================================
+   TOGGLE
+========================================= */
+
+darkModeButton.addEventListener(
+    "click",
+    function() {
+
+        document.body.classList.toggle(
+            "dark-mode"
+        );
+
+        const isDark =
+            document.body.classList.contains(
+                "dark-mode"
+            );
+
+
+        if (isDark) {
+
+            darkModeButton.innerHTML = "☀️";
+
+            darkModeButton.title =
+                "Light Mode";
+
+            localStorage.setItem(
+                "jalsahay-dark-mode",
+                "on"
+            );
+
+        } else {
+
+            darkModeButton.innerHTML = "🌙";
+
+            darkModeButton.title =
+                "Dark Mode";
+
+            localStorage.setItem(
+                "jalsahay-dark-mode",
+                "off"
+            );
+
+        }
+
+    }
+);
+
+</script>
+</body>
+
+</html>
